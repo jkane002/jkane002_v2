@@ -1,10 +1,19 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
-def home(request):
-    """base page"""
+def projects(request):
+    """Projects page (home)"""
     # context = {'posts': Post.objects.all()}
-    return render(request, 'base/index.html')
+    return render(request, 'base/projects.html')
+
+def about(request):
+    """about page"""
+    # context = {'posts': Post.objects.all()}
+    return render(request, 'base/about.html')
+
+def blog(request):
+    """blog page"""
+    # context = {'posts': Post.objects.all()}
+    return render(request, 'base/blog.html')
 
 '''
 class PostListView(ListView):
