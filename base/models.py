@@ -7,7 +7,7 @@ class Tag(models.Model):
         return self.name
 
 # Create your models here.
-class PortfolioPost(models.Model):
+class ProjectPost(models.Model):
     '''Fields for a single portfolio post'''
     # Facade
     title = models.CharField(max_length=200)

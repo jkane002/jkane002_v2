@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import PortfolioPost, Tag
+from .models import ProjectPost, Tag
 # Register your models here.
 
-admin.site.register(PortfolioPost)
+admin.site.register(ProjectPost)
 admin.site.register(Tag)
