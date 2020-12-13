@@ -1,9 +1,13 @@
 from django.shortcuts import render
 
+from .models import ProjectPost
+
 def projects(request):
     """Projects page (home)"""
-    # context = {'posts': Post.objects.all()}
-    return render(request, 'base/projects.html')
+    posts = ProjectPost.objects.all()
+
+    context = {'posts': posts }
+    return render(request, 'base/projects.html', context)
 
 def about(request):
     """about page"""

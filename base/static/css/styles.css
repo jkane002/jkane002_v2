@@ -478,3 +478,9 @@
        -webkit-touch-callout: none;
        -ms-user-select: none;
   }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(1fr, 4);
+    grid-gap: 8px;
+  }
