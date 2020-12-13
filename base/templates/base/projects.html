@@ -4,16 +4,15 @@
 {% block content %}
 <!-- Projects Grid Section -->
 <section class="portfolio" id="projects">
-    <h2 class="text-center mb-0 ">Projects</h2>
-    <hr class="star-light mb-5">
-
     <div class="projects-grid">
         {% for post in posts %}
         <div class="grid-element">
             <img class="thumbnail" src="{{post.thumbnail.url}}">
-            <h1>{{ post.title }}</h1>
-            <h3>{{ post.sub_heading }}</h3>
-            <a href="#">View More</a>
+            <div class="post-description">
+                <h3>{{ post.title }}</h3>
+                <h6>{{ post.sub_heading }}</h6>
+                <a href="#">View More</a>
+            </div>
         </div>
         {% endfor %}
     </div>
@@ -81,9 +80,6 @@
             </a>
         </div>
     </div> -->
-</section>
-</div>
-</div>
 </section>
 
 {% endblock content %}
