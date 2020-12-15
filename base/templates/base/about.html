@@ -4,23 +4,39 @@
 
 <body>
     <!-- About Section -->
-    <section class="portfolio">
-        <h2 class="text-center">About</h2>
-        <hr class="star-light mb-5">
+    <section>
         <div class="row">
-            <div class="col-lg-6 ml-auto text-center text-white">
-                <p>Recent UC Riverside graduate with a bachelor's degree in computer science. Currently looking for
-                    a
-                    full-time software engineering position in mobile development or computer graphics.</p>
-                <p>During my college career, I participated in a plethora of programming-related projects such as
-                    developing a
-                    virtual reality game, coding rendering scripts, directing an animated short in Maya, and
-                    building the user
-                    interface for an Android app. I also interned with the USC Institute for Creative Technologies
-                    and built
-                    their animation pipeline using Unity3D Game Engine.</p>
+            <!-- Take out from gitignore when in production -->
+            <div class="col-lg-4 ml-auto text-center text-white">
+                <div class="about-links pb-1 m-3">
+                    <img src="../../static/images/me.jpeg" alt="my face" class="rounded-circle m-3" id="me-img">
+                    <ul class="no-bullets m-4">
+                        <li>
+                            <h3> <a href="https://www.linkedin.com/in/jkaneshiro" target="blank"> LinkedIn</a></h3>
+                        </li>
+                        <li>
+                            <h3><a href="https://github.com/jkane002" target="blank"> GitHub</a></h3>
+                        </li>
+                        <li>
+                            <h3><a href="mailto:jkaneshiro97@gmail.com?Subject=Hello%20Again" target="blank"> Email</a>
+                            </h3>
+                        </li>
+                        <li>
+                            <h3><a href="#" target="blank"> Curriculum vitae</a>
+                            </h3>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-lg-4 mr-auto pt-4 text-center text-white">
+            <div class="col-lg-6 m-auto p-auto text-white">
+                <p>Recent UC Riverside graduate with a bachelor's degree in computer science. Currently looking for
+                    a full-time software engineering position in Python development.</p>
+                <p>During my college career, I participated in a plethora of programming-related projects such as
+                    developing a virtual reality game, coding rendering scripts, directing an animated short in Maya,
+                    and
+                    building the user interface for an Android app. I also interned with the USC Institute for Creative
+                    Technologies
+                    and built their animation pipeline using Unity3D Game Engine.</p>
                 <p>Outside of tech, I have a couple of side hustles — thrift reselling and investing in the stock
                     market —
                     which have taught me the value of data analytics, research, financial technology (Fintech), and
@@ -29,7 +45,6 @@
             </div>
         </div>
     </section>
-
 </body>
 
 {% endblock content %}

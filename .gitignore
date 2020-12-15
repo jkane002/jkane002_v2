@@ -1,6 +1,9 @@
 # Mac
 .DS_Store
 
+# Assets
+me.jpeg
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

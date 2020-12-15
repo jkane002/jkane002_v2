@@ -19,6 +19,19 @@
     font-family: 'Montserrat';
     color: #F67280;
   }
+
+  p {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  }
+
+  ul.no-bullets {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+  }
   
   hr.star-light,
   hr.star-dark {
@@ -505,3 +518,19 @@
     object-fit: cover;
     border-radius: 15px;
   }
+
+#me-img {
+  width: 200px;
+  height: auto;
+  -webkit-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+  -moz-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+  box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+}
+
+.about-links {
+  background-color: gray;
+  border-radius: 20px;
+  -webkit-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+  -moz-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+  box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+}
