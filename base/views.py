@@ -9,6 +9,12 @@ def projects(request):
     context = {'posts': posts }
     return render(request, 'base/projects.html', context)
 
+def project_post(request, slug):
+    '''A single project post with a slug ID & URL'''
+    post = ProjectPost.objects.get(slug=slug)
+    context = { 'post':post } 
+    return render(request, 'base/projectpost.html', context)
+
 def about(request):
     """about page"""
     # context = {'posts': Post.objects.all()}
