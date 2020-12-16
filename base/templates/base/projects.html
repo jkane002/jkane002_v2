@@ -22,6 +22,8 @@
         {% if is_paginated %}
         {% if page_obj.has_previous %}
         <a class="btn btn-outline-info mb-4 mx-1" href="?page={{ page_obj.previous_page_number }}">&laquo</a>
+        {% else %}
+        <a class="btn btn-outline-info disabled mb-4 mx-1">&laquo</a>
         {% endif %}
 
         {% for num in page_obj.paginator.page_range %}
@@ -34,6 +36,8 @@
 
         {% if page_obj.has_next %}
         <a class="btn btn-outline-info mb-4 mx-1" href="?page={{ page_obj.next_page_number }}">&raquo</a>
+        {% else %}
+        <a class="btn btn-outline-info disabled mb-4 mx-1">&raquo</a>
         {% endif %}
         {% endif %}
     </div>
