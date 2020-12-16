@@ -1,13 +1,14 @@
 from django.shortcuts import render
 
 from .models import ProjectPost
+from django.views.generic import ListView
 
-def projects(request):
-    """Projects page (home)"""
-    posts = ProjectPost.objects.all()
+# def projects(request):
+#     """Projects page (home)"""
+#     posts = ProjectPost.objects.all()
 
-    context = {'posts': posts }
-    return render(request, 'base/projects.html', context)
+#     context = {'posts': posts }
+#     return render(request, 'base/projects.html', context)
 
 def project_post(request, slug):
     '''A single project post with a slug ID & URL'''
@@ -25,11 +26,10 @@ def blog(request):
     # context = {'posts': Post.objects.all()}
     return render(request, 'base/blog.html')
 
-'''
-class PostListView(ListView):
-    model = Post
-    template_name = 'base/index.html'
+class ProjectsPostListView(ListView):
+    model = ProjectPost
+    template_name = 'base/projects.html'
     context_object_name = 'posts'
-    ordering = ['-date_posted']
-    paginate_by = 5
-'''
+    # ordering = ['-date_posted']
+    paginate_by = 3
+

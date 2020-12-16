@@ -3,8 +3,8 @@
 
 {% block content %}
 <!-- Projects Grid Section -->
-<section class="portfolio" id="projects">
-    <div class="projects-grid">
+<section>
+    <div class="projects-grid pb-4">
         {% for post in posts %}
         <div class="grid-element">
             <img class="thumbnail" src="{{post.thumbnail.url}}">
@@ -17,69 +17,27 @@
         {% endfor %}
     </div>
 
+    <div class="pagination">
+        {% if is_paginated %}
+        {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
 
-    <!-- <div class="row mx-2">
-        <div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#carnivalgames">
-                <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                    <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                        <h2> Virtual Reality</h2>
-                    </div>
-                </div>
-                <img class="img-fluid" src="img/portfolio/carnival.png" alt="">
-            </a>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#rpark">
-                <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                    <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                        <h2> Android App</h2>
-                    </div>
-                </div>
-                <img class="img-fluid" src="img/portfolio/app.png" alt="">
-            </a>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#virtualhumansinternship">
-                <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                    <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                        <h2>USC ICT Internship</h2>
-                    </div>
-                </div>
-                <img class="img-fluid" src="img/portfolio/blendshapes.png" alt="">
-            </a>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#Pomo">
-                <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                    <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                        <h2>Animated Short</h2>
-                    </div>
-                </div>
-                <img class="img-fluid" src="img/cs193/PomoRig.png" alt="">
-            </a>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#ballheroID">
-                <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                    <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                        <h2>3D Platform Game</h2>
-                    </div>
-                </div>
-                <img class="img-fluid" src="img/portfolio/ballhero_header.png" alt="">
-            </a>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#ee120bID">
-                <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                    <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                        <h2>Embedded Systems</h2>
-                    </div>
-                </div>
-                <img class="img-fluid" src="img/portfolio/led_rainbow.jpeg" alt="">
-            </a>
-        </div>
-    </div> -->
+        {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+        <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+        {% endif %}
+
+        {% endif %}
+    </div>
 </section>
-
 {% endblock content %}
