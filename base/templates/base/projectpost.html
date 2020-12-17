@@ -13,7 +13,24 @@
     Project Status
     Author -->
 <section>
-    <h3>{{ post.title }}</h3>
+    <h3> 1 {{ post.title }}</h3>
+    <h3> 2 {{post.start_date | date:"M Y" }}</h3>
+    <h3> 3 {{post.end_date | date:"M Y" }}</h3>
+
+    {% for tag in post.tags.all %}
+    <h3> tags {{ tag }}</h3>
+    {%  endfor %}
+
+    <h3> 4 {{post.problem}}</h3>
+    <h3> 5 {{post.objective}}</h3>
+    <h3> 6 {{post.builtwith}}</h3>
+    <h3> 7 {{post.features}}</h3>
+    <h3> 8 {{post.description}}</h3>
+
+    <!-- May need to change the many-to-many relationship -->
+    {% for status in post.project_status.all %}
+    <h3> 9 {{status}}</h3>
+    {%  endfor %}
 </section>
 
 {% endblock content %}

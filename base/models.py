@@ -38,7 +38,6 @@ class ProjectPost(models.Model):
     builtwith = models.TextField(null=True, blank=True)
     features = models.TextField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    created = models.DateTimeField(auto_now_add=True)
     project_status = models.ManyToManyField(ProjectStatus, blank=True)
 
     def __str__(self):
