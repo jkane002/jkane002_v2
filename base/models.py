@@ -9,6 +9,15 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+class ProjectStatus(models.Model):
+    status = models.CharField(max_length=200)
+
+    class Meta:
+        verbose_name_plural = "Project Statuses"
+
+    def __str__(self):
+        return self.status
+
 # Create your models here.
 class ProjectPost(models.Model):
     '''Fields for a single portfolio post'''
@@ -16,13 +25,21 @@ class ProjectPost(models.Model):
     title = models.CharField(max_length=200)
     sub_heading = models.CharField(max_length=200, null=True, blank=True) # can have none
     thumbnail = models.ImageField(null=True, blank=True, upload_to="images", default="images/placeholder.png")
-    # Details (DetailView?)
-    body = models.TextField(null=True, blank=True)
-    created = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=False)
-    # featured = models.BooleanField(default=False)
-    tags = models.ManyToManyField(Tag, blank=True)
     slug = models.SlugField(null=True, blank=True)
+    
+    # Project Post Details (DetailView?)
+    start_date = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
+    tags = models.ManyToManyField(Tag, blank=True)
+    # ongoing = models.BooleanField(default=False)   ?boolean for ongoing?
+    problem = models.TextField(null=True, blank=True)
+    objective = models.TextField(null=True, blank=True)
+    builtwith = models.TextField(null=True, blank=True)
+    features = models.TextField(null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+    project_status = models.ManyToManyField(ProjectStatus, blank=True)
 
     def __str__(self):
         return self.title
