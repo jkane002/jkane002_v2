@@ -21,6 +21,9 @@ class ProjectStatus(models.Model):
 # Create your models here.
 class ProjectPost(models.Model):
     '''Fields for a single portfolio post'''
+
+    # Decided not to include file uploads, would rather have them as static files
+
     # Facade
     title = models.CharField(max_length=200)
     sub_heading = models.CharField(max_length=200, null=True, blank=True) # can have none
