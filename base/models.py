@@ -25,23 +25,24 @@ class ProjectPost(models.Model):
     # Decided not to include file uploads, would rather have them as static files
 
     # Facade
-    title = models.CharField(max_length=200)
-    sub_heading = models.CharField(max_length=200, null=True, blank=True) # can have none
+    title = models.CharField(max_length=200, blank=False)
+    sub_heading = models.CharField(max_length=200, null=True, blank=False) # can have none
     thumbnail = models.ImageField(null=True, blank=True, upload_to="images", default="images/placeholder.png")
     active = models.BooleanField(default=False)
     slug = models.SlugField(null=True, blank=True)
     
     # Project Post Details (DetailView?)
-    start_date = models.DateField(null=True, blank=True)
+    start_date = models.DateField(null=True, blank=False)
     end_date = models.DateField(null=True, blank=True)
-    tags = models.ManyToManyField(Tag, blank=True)
+    image = models.ImageField(null=True, blank=True, upload_to="images")
     # ongoing = models.BooleanField(default=False)   ?boolean for ongoing?
     problem = models.TextField(null=True, blank=True)
     objective = models.TextField(null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
     builtwith = models.TextField(null=True, blank=True)
     features = models.TextField(null=True, blank=True)
-    description = models.TextField(null=True, blank=True)
-    project_status = models.ManyToManyField(ProjectStatus, blank=True)
+    project_status = models.ManyToManyField(ProjectStatus, blank=False)
+    tags = models.ManyToManyField(Tag, blank=False)
 
     def __str__(self):
         return self.title
