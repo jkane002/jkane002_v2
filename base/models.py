@@ -26,7 +26,7 @@ class ProjectPost(models.Model):
 
     # Facade
     title = models.CharField(max_length=200, blank=False)
-    sub_heading = models.CharField(max_length=200, null=True, blank=False) # can have none
+    sub_heading = models.CharField(max_length=150, null=True, blank=False)
     thumbnail = models.ImageField(null=True, blank=True, upload_to="images", default="images/placeholder.png")
     active = models.BooleanField(default=False)
     slug = models.SlugField(null=True, blank=True)
