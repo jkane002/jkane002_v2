@@ -30,6 +30,6 @@ class ProjectsPostListView(ListView):
     model = ProjectPost
     template_name = 'base/projects.html'
     context_object_name = 'posts'
-    # ordering = ['-date_posted']
+    ordering = ['-start_date']
     paginate_by = 3
 
