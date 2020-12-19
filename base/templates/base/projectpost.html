@@ -37,7 +37,11 @@
 
         <div class="col-lg-3 order-md-1 ml-auto mb-5">
             <!-- Github link -->
-            <a class="btn btn-light mb-1" href="#">View on GitHub</a>
+            {%  if post.github_link != None  %}
+            <a class="btn btn-light mb-1" href="{{post.github_link }}" target="blank">
+                View on GitHub
+            </a>
+            {%  endif  %}
             <h3 class="mt-3">Features</h3>
             <h4> 7 {{post.features}}</h4>
             <h3 class="mt-3">Built With:</h3>

@@ -34,6 +34,7 @@ class ProjectPost(models.Model):
     # Project Post Details (DetailView?)
     start_date = models.DateField(null=True, blank=False)
     end_date = models.DateField(null=True, blank=True)
+    github_link = models.URLField(max_length=200, null=True, blank=True)
     image = models.ImageField(null=True, blank=True, upload_to="images")
     # ongoing = models.BooleanField(default=False)   ?boolean for ongoing?
     problem = models.TextField(null=True, blank=True)
