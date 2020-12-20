@@ -508,3 +508,8 @@
 	padding: 2px 5px;
 	font-size: 14px;	
 }
+
+hr.light {
+  border: 1px solid white;
+  border-radius: 5px;
+}
