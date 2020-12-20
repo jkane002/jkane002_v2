@@ -12,7 +12,7 @@
     Description
     Project Status
     Author -->
-<a class="btn btn-sm btn-primary ml-4" href="{% url 'projects-page' %}">&laquo Back to Posts</a>
+<a class="btn btn-sm btn-outline-info ml-4" href="{% url 'projects-page' %}">&laquo Back to Posts</a>
 <section class="mx-5">
 
     <div class="row">
@@ -41,21 +41,26 @@
             <a class="btn btn-light mb-1" href="{{post.github_link }}" target="blank">
                 View on GitHub
             </a>
+            {% else %}
+            <!-- <a class="btn btn-light mb-1" href="{{post.web_link }}" target="blank"> -->
+            <a class="btn btn-light mb-1" href="{{post.web_link }}" target="blank">
+                View Project
+            </a>
             {%  endif  %}
             <h3 class="mt-3">Features</h3>
             <h4> 7 {{post.features}}</h4>
-            <h3 class="mt-3">Built With:</h3>
-            <h4> 6 {{post.builtwith}}</h4>
-            <h3 class="mt-3">Tags</h3>
-            {% for tag in post.tags.all %}
-            <span> {{ tag }}</span>
-            {%  endfor %}
-            <!-- May need to change the many-to-many relationship -->
+            <!-- <h3 class="mt-3">Built With:</h3>
+            <h4> 6 {{post.builtwith}}</h4> -->
             <h3 class="mt-3"> Project Status</h3>
+            <!-- May need to change the many-to-many relationship -->
             {% for status in post.project_status.all %}
-            <h3 class="mt-3"> 9 {{status}}</h3>
+            <li class="mt-3"> {{status}}</li>
             {%  endfor %}
 
+            <h3 class="mt-3">Tags</h3>
+            {% for tag in post.tags.all %}
+            <span class="tag"> {{ tag }}</span>
+            {%  endfor %}
         </div>
     </div>
 </section>
