@@ -4,29 +4,37 @@
         <button class="navbar-toggler navbar-toggler-right  bg-primary text-white rounded" type="button"
             data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
             aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars">
-            </i>
+            <!-- TODO -->
+            <span class="navbar-toggler-icon text-white"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav mx-auto">
+
+                <!-- Projects -->
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-center"
                         href="{% url 'projects-page'%}">
                         Projects
                     </a>
                 </li>
+
+                <!-- About -->
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-center"
                         href="{% url 'about-page'%}">
                         About
                     </a>
                 </li>
+
+                <!-- Blog -->
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-center"
                         href="{% url 'blog-page'%}">
                         Blog
                     </a>
                 </li>
+
+                <!-- Tutoring -->
                 <!-- <li class="nav-item mx-0 mx-lg-1">
                         <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-center" href="#">
                             Tutoring

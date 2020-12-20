@@ -1,62 +1,63 @@
 {% extends 'base/index.html' %}
-{% load static %}
 {% block content %}
-<!--  Decided not to include file uploads, would rather have them as static files -->
-<!-- Title
-    Starting Date
-    Ending Date
-    Problem
-    Objective
-    Built With
-    Features
-    Description
-    Project Status
-    Author -->
 <a class="btn btn-sm btn-outline-info ml-4" href="{% url 'projects-page' %}">&laquo Back to Posts</a>
 <section class="mx-5">
 
     <div class="row">
-        <div class="col-lg-7 mx-auto mb-5 pb-5">
+        <div class="col-lg-8 mx-auto mb-5 pb-5">
+
+            <!-- Title -->
             <h3>{{ post.title }}</h3>
+
+            <!-- Project Dates -->
             {%  if post.end_date is None %}
             <h6>{{post.start_date | date:"M Y" }} - Present</h6>
             {% else %}
             <h6>{{post.start_date | date:"M Y" }} - {{post.end_date | date:"M Y" }}</h6>
             {%  endif %}
-            <h4>{{post.sub_heading}}</h4>
 
+            <!-- Sub-Heading -->
+            <h4>{{post.sub_heading }}</h4>
             <hr>
 
+            <!-- Problem -->
             <h3 class="mt-3">Problem</h3>
-            <h4> 4 {{post.problem}}</h4>
+            <h4>{{post.problem | linebreaks}}</h4>
+
+            <!-- Objective -->
             <h3 class="mt-3">Objective</h3>
-            <h4> 5 {{post.objective}}</h4>
+            <h4> {{post.objective | linebreaks}}</h4>
+
+            <!-- Description -->
             <h3 class="mt-3">Description </h3>
-            <h4> {{post.description}}</h4>
+            <h4> {{post.description | linebreaks}}</h4>
         </div>
 
         <div class="col-lg-3 mx-auto mb-5">
-            <!-- Github link -->
+
+            <!-- Links -->
             {%  if post.github_link != None  %}
             <a class="btn btn-light mb-1" href="{{post.github_link }}" target="blank">
                 View on GitHub
             </a>
             {% else %}
-            <!-- <a class="btn btn-light mb-1" href="{{post.web_link }}" target="blank"> -->
             <a class="btn btn-light mb-1" href="{{post.web_link }}" target="blank">
                 View Project
             </a>
             {%  endif  %}
+
+            <!-- Features -->
             <h3 class="mt-3">Features</h3>
             <h4> {{post.features | linebreaks}}</h4>
-            <!-- <h3 class="mt-3">Built With:</h3>
-            <h4> 6 {{post.builtwith}}</h4> -->
+
+            <!-- Project Status -->
             <h3 class="mt-3"> Project Status</h3>
             <!-- May need to change the many-to-many relationship -->
             {% for status in post.project_status.all %}
-            <li class="mt-3"> {{status}}</li>
+            <h4> {{status | linebreaks}}</h4>
             {%  endfor %}
 
+            <!-- Tags -->
             <h3 class="mt-3">Tags</h3>
             {% for tag in post.tags.all %}
             <span class="tag"> {{ tag }}</span>

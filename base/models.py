@@ -4,12 +4,14 @@ from django.utils.text import slugify
 from PIL import Image
 
 class Tag(models.Model):
+    '''Project Tags'''
     name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
 
 class ProjectStatus(models.Model):
+    '''Current status of project'''
     status = models.CharField(max_length=200)
 
     class Meta:
@@ -21,8 +23,6 @@ class ProjectStatus(models.Model):
 # Create your models here.
 class ProjectPost(models.Model):
     '''Fields for a single portfolio post'''
-
-    # Decided not to include file uploads, would rather have them as static files
 
     # Facade
     title = models.CharField(max_length=200, blank=False)
@@ -37,11 +37,9 @@ class ProjectPost(models.Model):
     github_link = models.URLField(max_length=200, null=True, blank=True)
     web_link = models.URLField(max_length=200, null=True, blank=True)
     image = models.ImageField(null=True, blank=True, upload_to="images")
-    # ongoing = models.BooleanField(default=False)   ?boolean for ongoing?
     problem = models.TextField(null=True, blank=True)
     objective = models.TextField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    # builtwith = models.TextField(null=True, blank=True)
     features = models.TextField(null=True, blank=True)
     project_status = models.ManyToManyField(ProjectStatus, blank=False)
     tags = models.ManyToManyField(Tag, blank=False)
@@ -66,4 +64,6 @@ class ProjectPost(models.Model):
             self.slug = slug
 
         super().save(*args, **kwargs)
+
+
 # class BlogPost():
