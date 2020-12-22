@@ -65,5 +65,12 @@ class ProjectPost(models.Model):
 
         super().save(*args, **kwargs)
 
+class ProjectPostImage(models.Model):
+    '''Field for project images'''
+    post = models.ForeignKey(ProjectPost, default=None, on_delete=models.CASCADE)
+    images = models.ImageField(upload_to="images/")
+
+    def __str__(self):
+        return self.post.title
 
 # class BlogPost():
