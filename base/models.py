@@ -67,7 +67,7 @@ class ProjectPost(models.Model):
 
 class ProjectPostImage(models.Model):
     '''Field for project images'''
-    post = models.ForeignKey(ProjectPost, default=None, on_delete=models.CASCADE)
+    post = models.ForeignKey(ProjectPost, default="images/placeholder.png", on_delete=models.CASCADE, null=True)
     images = models.ImageField(upload_to="images/")
 
     def __str__(self):

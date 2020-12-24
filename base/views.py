@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import ProjectPost
+from .models import ProjectPost, ProjectPostImage
 from django.views.generic import ListView
 
 class ProjectsPostListView(ListView):
@@ -14,7 +14,11 @@ class ProjectsPostListView(ListView):
 def project_post(request, slug):
     '''A single project post with a slug ID & URL'''
     post = ProjectPost.objects.get(slug=slug)
-    context = { 'post':post } 
+    photos = ProjectPostImage.objects.filter(post=post)
+    context = { 
+        'post':post,
+        'photos':photos
+    } 
     return render(request, 'base/projectpost.html', context)
 
 def about(request):

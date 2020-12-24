@@ -20,6 +20,7 @@
             <h4>{{post.sub_heading }}</h4>
             <hr class="light">
 
+
             <!-- Problem -->
             <h3 class="mt-3">Problem</h3>
             <h4>{{post.problem | linebreaks}}</h4>
@@ -31,6 +32,25 @@
             <!-- Description -->
             <h3 class="mt-3">Description </h3>
             <h4> {{post.description | linebreaks}}</h4>
+
+            <!-- Carousel -->
+            <div id="carousel_image" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner carousel_img_style">
+                    {% for p in photos %}
+                    <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %} ">
+                        <img class="d-block w-100 " src="{{p.images.url}}" alt="Slide">
+                    </div>
+                    {% endfor %}
+                </div>
+                <a class="carousel-control-prev" href="#carousel_image " role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel_image " role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
         </div>
 
         <div class="col-lg-3 mx-auto mb-5">
