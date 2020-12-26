@@ -31,4 +31,12 @@ def blog(request):
     # context = {'posts': Post.objects.all()}
     return render(request, 'base/blog.html')
 
-
+def project_post_carousel(request, slug):
+    '''Renders only the post's image carousel'''
+    post = ProjectPost.objects.get(slug=slug)
+    photos = ProjectPostImage.objects.filter(post=post)
+    context = { 
+        'post':post,
+        'photos':photos
+    } 
+    return render(request, 'base/projectscarousel.html', context)
