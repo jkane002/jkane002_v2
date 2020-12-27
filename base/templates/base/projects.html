@@ -4,19 +4,16 @@
 {% block content %}
 <!-- Projects Grid Section -->
 <section>
-    <div class="projects-grid py-4">
+    <div class="projects-grid py-4 m-4">
         {% for post in posts %}
         <div class="grid-element">
-            <img class="thumbnail" src="{{post.thumbnail.url}}">
-            <div class="post-description">
-                <h3>{{ post.title }}</h3>
-                <h6>{{ post.sub_heading }}</h6>
-                <div>
-                    <a class="btn btn-outline-info" href="{% url 'project-post-page' post.slug %}">
-                        View More
-                    </a>
+            <a href="{% url 'project-post-page' post.slug %}">
+                <img class="thumbnail" src="{{post.thumbnail.url}}">
+                <div class="post-description">
+                    <h3>{{ post.title }}</h3>
+                    <h6>{{ post.sub_heading }}</h6>
                 </div>
-            </div>
+            </a>
         </div>
         {% endfor %}
     </div>
