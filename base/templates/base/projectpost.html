@@ -54,7 +54,7 @@
                     {% for p in photos %}
                     <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %} ">
                         <a href="{% url 'project-post-carousel' post.slug %}">
-                            <img class="d-block w-100 " src="{{p.images.url}}" alt="Slide">
+                            <img class="d-block w-100 " src="{{p.image.url}}" alt="Slide">
                         </a>
                     </div>
                     {% endfor %}
