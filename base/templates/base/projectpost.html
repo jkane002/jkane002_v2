@@ -32,6 +32,28 @@
             <h3 class="mt-3">Description </h3>
             <h4> {{post.description | linebreaks}}</h4>
 
+            <!-- Challenges -->
+            <h3 class="mt-3">Challenges </h3>
+            <h4> {{post.challenge | linebreaks}}</h4>
+
+            <!-- Enjoyed -->
+            <h3 class="mt-3">What I Enjoyed </h3>
+            <h4> {{post.enjoyed | linebreaks}}</h4>
+
+            <!-- Leadership -->
+            {%  if post.leadership is not None %}
+            <h3 class="mt-3">Leadership </h3>
+            <h4> {{post.leadership | linebreaks}}</h4>
+            {% endif %}
+
+            <!-- Mistakes -->
+            <h3 class="mt-3">Mistakes </h3>
+            <h4> {{post.mistake | linebreaks}}</h4>
+
+            <!-- Possible revisions -->
+            <h3 class="mt-3">Possible Revisions </h3>
+            <h4> {{post.possible_revisions | linebreaks}}</h4>
+
         </div>
 
         <div class="col-lg-3 mx-auto mb-5">

@@ -24,22 +24,30 @@ class ProjectStatus(models.Model):
 class ProjectPost(models.Model):
     '''Fields for a single portfolio post'''
 
-    # Facade
+    # Thumbnail
     title = models.CharField(max_length=200, blank=False)
     sub_heading = models.CharField(max_length=150, null=True, blank=False)
     thumbnail = models.ImageField(null=True, blank=True, upload_to="images", default="images/placeholder.png")
+    
     active = models.BooleanField(default=False)
     slug = models.SlugField(null=True, blank=True)
     
-    # Project Post Details (DetailView?)
+    # Project Post Details
     start_date = models.DateField(null=True, blank=False)
     end_date = models.DateField(null=True, blank=True)
-    github_link = models.URLField(max_length=200, null=True, blank=True)
-    web_link = models.URLField(max_length=200, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True, upload_to="images")
+    
     problem = models.TextField(null=True, blank=True)
     objective = models.TextField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
+    challenge = models.TextField(null=True, blank=True)
+    mistake = models.TextField(null=True, blank=True)
+    enjoyed = models.TextField(null=True, blank=True)
+    leadership = models.TextField(null=True, blank=True)
+    possible_revisions = models.TextField(null=True, blank=True)
+
+    # Side Bar
+    github_link = models.URLField(max_length=200, null=True, blank=True)
+    web_link = models.URLField(max_length=200, null=True, blank=True)
     features = models.TextField(null=True, blank=True)
     project_status = models.ManyToManyField(ProjectStatus, blank=False)
     tags = models.ManyToManyField(Tag, blank=False)
