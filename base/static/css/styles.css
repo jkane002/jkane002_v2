@@ -4,9 +4,12 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-freelancer/blob/master/LICENSE)
  */
 
- body {
+ html, body {
     font-family: 'Lato';
     background-color: #35477D;
+    margin: 0;
+    padding: 0;
+    height: 100%;
   }
   
   h1,
@@ -492,6 +495,14 @@
   box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
 }
 
+@media (max-width: 770px) {
+  .pagination {
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15%;
+  }
+}
+
 .pagination {
   justify-content: center;
   align-items: center;
@@ -516,4 +527,9 @@ hr.light {
 
 .carousel_img_style {
   border-radius: 10px;
+}
+
+.img_carousel {
+  width: 50%; 
+  margin: auto;
 }

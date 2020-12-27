@@ -7,7 +7,11 @@
         <div class="carousel-inner carousel_img_style">
             {% for p in photos %}
             <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %} ">
-                <img class="d-block w-100 " src="{{p.images.url}}" alt="Slide">
+                <img class="d-flex justify-content-center img_carousel" src="{{p.images.url}}" alt="Slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Hello</h5>
+                    <p>...</p>
+                </div>
             </div>
             {% endfor %}
         </div>
