@@ -26,7 +26,7 @@ class ProjectPost(models.Model):
 
     # Thumbnail
     title = models.CharField(max_length=200, blank=False)
-    sub_heading = models.CharField(max_length=150, null=True, blank=False)
+    sub_heading = models.CharField(max_length=100, null=True, blank=False)
     thumbnail = models.ImageField(null=True, blank=True, upload_to="images", default="images/placeholder.png")
     
     active = models.BooleanField(default=False)
@@ -35,7 +35,7 @@ class ProjectPost(models.Model):
     # Project Post Details
     start_date = models.DateField(null=True, blank=False)
     end_date = models.DateField(null=True, blank=True)
-    
+
     problem = models.TextField(null=True, blank=True)
     objective = models.TextField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
