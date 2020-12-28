@@ -26,11 +26,6 @@ def about(request):
     # context = {'posts': Post.objects.all()}
     return render(request, 'base/about.html')
 
-def blog(request):
-    """blog page"""
-    # context = {'posts': Post.objects.all()}
-    return render(request, 'base/blog.html')
-
 def project_post_carousel(request, slug):
     '''Renders only the post's image carousel'''
     post = ProjectPost.objects.get(slug=slug)
