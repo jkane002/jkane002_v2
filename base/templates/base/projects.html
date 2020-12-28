@@ -6,7 +6,7 @@
 <section>
     <div class="projects-grid py-4 m-4">
         {% for post in posts %}
-        <div class="grid-element">
+        <div class="grid-element pb-4">
             <a href="{% url 'project-post-page' post.slug %}">
                 <img class="thumbnail" src="{{post.thumbnail.url}}">
                 <div class="post-description">
