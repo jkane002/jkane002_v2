@@ -6,15 +6,15 @@
 <section>
     <div class="projects-grid py-4 m-4">
         {% for post in posts %}
-        <div class="grid-element pb-4">
-            <a href="{% url 'project-post-page' post.slug %}">
+        <a href="{% url 'project-post-page' post.slug %}">
+            <div class="grid-element pb-4">
                 <img class="thumbnail" src="{{post.thumbnail.url}}">
                 <div class="post-description">
                     <h3>{{ post.title }}</h3>
                     <h6>{{ post.sub_heading }}</h6>
                 </div>
-            </a>
-        </div>
+            </div>
+        </a>
         {% endfor %}
     </div>
 
