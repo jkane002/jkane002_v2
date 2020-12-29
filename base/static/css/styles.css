@@ -343,6 +343,7 @@
   
   .btn {
     border-width: 2px;
+    background-color: #a2cbca;
   }
   
   .bg-primary {
@@ -385,6 +386,9 @@
     border-color: #18BC9C;
   }
   
+  .btn-light {
+    background-color: #fff !important;
+  }
   .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
     background-color: #128f76;
     border-color: #128f76;
@@ -481,6 +485,7 @@
   }
 
   .grid-element {
+    background-color: #a2cbca;
     height: 100%;
     border:1px solid var(--borderColor);
     border-radius: 15px;
@@ -509,7 +514,7 @@
 }
 
 .about-links {
-  background-color: gray;
+  background-color: #a2cbca;
   border-radius: 20px;
   -webkit-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
   -moz-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
