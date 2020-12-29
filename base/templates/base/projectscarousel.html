@@ -1,9 +1,9 @@
 {% extends 'base/index.html' %}
 {% block content %}
 <!-- Carousel -->
-<a class="btn btn-sm btn-outline-info ml-4" href="{% url 'project-post-page' post.slug %}">&laquo Back to Project</a>
 <section>
     <div id="carousel_image" class="carousel slide" data-ride="carousel">
+        <h3 class="text-center">{{ post.title }}</h3>
         <div class="carousel-inner carousel_img_style">
             {% for p in photos %}
             <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %} ">
