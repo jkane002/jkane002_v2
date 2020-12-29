@@ -14,7 +14,13 @@
                 <!-- Projects -->
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-center 
-                        {% if url_name == 'projects-page' %}active{% endif %}" href="{% url 'projects-page'%}">
+                        {% if url_name == 'projects-page' %} 
+                            active 
+                        {% elif url_name == 'project-post-page' %} 
+                            active 
+                        {% elif url_name == 'project-post-carousel' %} 
+                            active 
+                        {% endif %}" href="{% url 'projects-page'%}">
                         Projects
                     </a>
                 </li>
@@ -30,7 +36,8 @@
                 <!-- Blog -->
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-center 
-                        {% if url_name == 'blog-page' %}active{% endif %}" href="{% url 'blog-page'%}">
+                        {% if url_name == 'blog-page' %} active {% elif url_name == 'blog-post-detail' %} active {% endif %}"
+                        href="{% url 'blog-page'%}">
                         Blog
                     </a>
                 </li>
