@@ -105,7 +105,7 @@
   /* hover color */
   #mainNav .navbar-nav li.nav-item a.nav-link:hover {
     color: #fff;
-    text-decoration: underline;
+    /* text-decoration: underline; */
   }
   /* pressed down color */
   #mainNav .navbar-nav li.nav-item a.nav-link:active, #mainNav .navbar-nav li.nav-item a.nav-link:focus {
@@ -362,7 +362,7 @@ a.article-title:hover {
   text-decoration: none;
 }
 
-.article-content {
+.article-content, .blogpost-article-content {
   white-space: pre-line;
 }
 
