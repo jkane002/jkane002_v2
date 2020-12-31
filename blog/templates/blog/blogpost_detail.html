@@ -9,6 +9,14 @@
                     <small> Jonathan Kaneshiro | {{ object.date_posted | date:"M d, Y" }}</small>
                 </div>
                 <p class="blogpost-article-content">{{ object.content}}</p>
+                <span> Tags: </span>
+                {% if blogposts.tags.all%}
+                {% for tag in blogposts.tags.all %}
+                <span class="tag"> {{ tag }}</span>
+                {%  endfor %}
+                {% else %}
+                <span> N/A</span>
+                {% endif %}
             </div>
         </article>
     </div>

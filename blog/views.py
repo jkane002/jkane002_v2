@@ -17,3 +17,4 @@ class BlogPostListView(ListView):
 class BlogPostDetailView(DetailView):
     '''Detail View of a single post'''
     model = BlogPost
+    context_object_name = 'blogposts'
