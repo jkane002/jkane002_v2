@@ -271,7 +271,7 @@
   }
 
   .grid-element {
-    background-color: #a2cbca;
+    background-color: #98C6C5;
     height: 100%;
     border:1px solid var(--borderColor);
     border-radius: 15px;
@@ -280,6 +280,10 @@
     box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
   }
 
+  .grid-element:hover {
+    background-color: #a2cbca;
+  }
+  
   .post-description {
     margin: 5%;
   }
