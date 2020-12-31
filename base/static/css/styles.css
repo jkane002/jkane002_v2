@@ -312,6 +312,7 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 15%;
+    margin-bottom: 5%;
   }
 }
 
@@ -356,10 +357,6 @@ hr.light {
   box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
 }
 
-.article-title {
-  color: #444444;
-}
-
 a.article-title:hover {
   color: #428bca;
   text-decoration: none;
@@ -369,10 +366,8 @@ a.article-title:hover {
   white-space: pre-line;
 }
 
-.article-img {
-  height: 65px;
-  width: 65px;
-  margin-right: 16px;
+.article-content:hover {
+  background-color: #a2cbca;;
 }
 
 .article-metadata {

@@ -8,10 +8,12 @@
             <article class="media mx-5 mb-2">
                 <div class="media-body">
                     <h3><a class="article-title" href="{% url 'blog-post-detail' post.id %}">{{ post.title }}</a></h3>
-                    <p class="article-content">{{ post.content | safe | slice:": 200" }}</p>
                     <div class="article-metadata">
-                        <small>{{ post.date_posted | date:"M d, Y" }}</small>
+                        <small> Jonathan Kaneshiro | {{ post.date_posted | date:"M d, Y" }}</small>
                     </div>
+                    <a class="article-title" href="{% url 'blog-post-detail' post.id %}">
+                        <p class="article-content">{{ post.content | safe |truncatechars:100 }}</p>
+                    </a>
                 </div>
             </article>
             {% endfor %}
@@ -22,7 +24,7 @@
         {% endblock sidebar %}
     </div>
 
-    <div class="pagination">
+    <div class="pagination mb-5">
         <!-- TODO: Work on 404 error page -->
         {% if is_paginated %}
         {% if page_obj.has_previous %}
