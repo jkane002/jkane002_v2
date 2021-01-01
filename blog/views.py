@@ -14,11 +14,11 @@ class BlogPostListView(ListView):
     context_object_name = 'blogposts'
     ordering = ['-date_posted']
     paginate_by = 5
+    
     def get_context_data(self, **kwargs):
+        '''mulitple contexts - blogposts & tags'''
         context = super().get_context_data(**kwargs)
         context['tags'] = Tag.objects.all()
-        # Add any other variables to the context here
-        # ...
         return context
 
 class BlogPostDetailView(DetailView):
