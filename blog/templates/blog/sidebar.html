@@ -10,8 +10,8 @@
     </div>
     <div>
         <h3 class="mt-5">Tags</h3>
-        {% for tag in blogposts.tags.all %}
-        <span class="tag"> {{ tag }}</span>
+        {% for tag in tags %}
+        <span class="tag"> {{ tag.name }}</span>
         {%  endfor %}
     </div>
 </div>

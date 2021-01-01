@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from .models import BlogPost
+from .models import BlogPost, Tag
 from django.views.generic import ListView, DetailView
+import random
 
 def blog(request):
     """blog page"""
@@ -13,6 +14,12 @@ class BlogPostListView(ListView):
     context_object_name = 'blogposts'
     ordering = ['-date_posted']
     paginate_by = 5
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tags'] = Tag.objects.all()
+        # Add any other variables to the context here
+        # ...
+        return context
 
 class BlogPostDetailView(DetailView):
     '''Detail View of a single post'''
