@@ -7,4 +7,5 @@ urlpatterns = [
     path('post/<slug:slug>/', views.project_post, name='project-post-page'),
     path('post/<slug:slug>/carousel/', views.project_post_carousel , name='project-post-carousel'),
     path('about/', views.about, name='about-page'),
+    path('tutor/', views.tutor, name='tutor-page'),
 ]

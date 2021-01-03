@@ -43,11 +43,12 @@
                 </li>
 
                 <!-- Tutoring -->
-                <!-- <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-center" href="#">
-                            Tutoring
-                        </a>
-                    </li> -->
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-center
+                        {% if url_name == 'tutor-page' %} active {% endif %}" href="{% url 'tutor-page' %}">
+                        Tutoring
+                    </a>
+                </li>
             </ul>
             {% endwith %}
 

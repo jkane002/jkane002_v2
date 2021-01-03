@@ -35,3 +35,7 @@ def project_post_carousel(request, slug):
         'photos':photos
     } 
     return render(request, 'base/projectscarousel.html', context)
+
+def tutor(request):
+    """tutor page"""
+    return render(request, 'base/tutor.html')
