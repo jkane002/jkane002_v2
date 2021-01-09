@@ -1,7 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import ProjectPost, ProjectPostImage
 from django.views.generic import ListView
+
+from django.urls import reverse
+from django.http import JsonResponse
+
+# Tutoring Page
+import stripe
+import os
+stripe.api_key = os.environ.get('STRIPE_TEST_SK')
 
 class ProjectsPostListView(ListView):
     """Projects page (home)"""
@@ -39,3 +47,29 @@ def project_post_carousel(request, slug):
 def tutor(request):
     """tutor page"""
     return render(request, 'base/tutor.html')
+
+def charge(request):
+    amount = 5
+
+    if request.method == 'POST':
+        print('Data: ', request.POST)
+
+        customer = stripe.Customer.create(
+			name=request.POST['name'],
+			email=request.POST['email'],
+			source=request.POST['stripeToken']
+			)
+
+        charge = stripe.Charge.create(
+			customer=customer,
+			amount=amount*100,
+			currency='usd',
+			description="Tutoring"
+			)
+        
+    return redirect(reverse('tutor-success', args=[amount]))
+
+
+def successMsg(request, args):
+    amount = args
+    return render(request, 'base/tutor_success.html', {'amount':amount})
