@@ -114,7 +114,7 @@
   /* active link */
   #mainNav .navbar-nav li.nav-item a.nav-link.active {
     color: #fff;
-    text-decoration: underline;
+    border-bottom: 1px solid white;
   }
   
   #mainNav .navbar-toggler {
