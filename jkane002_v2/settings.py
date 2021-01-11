@@ -124,3 +124,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'base/static/images')
+
+STRIPE_TEST_PK = os.environ.get('STRIPE_TEST_PK')
+STRIPE_TEST_SK = os.environ.get('STRIPE_TEST_SK')
+
+# STRIPE_LIVE_PK = os.environ.get('STRIPE_LIVE_PK')
+# STRIPE_LIVE_SK = os.environ.get('STRIPE_LIVE_SK')

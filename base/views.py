@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.conf import settings
 
 from .models import ProjectPost, ProjectPostImage
 from django.views.generic import ListView
@@ -8,8 +9,7 @@ from django.http import JsonResponse
 
 # Tutoring Page
 import stripe
-import os
-stripe.api_key = os.environ.get('STRIPE_TEST_SK')
+stripe.api_key = settings.STRIPE_TEST_SK
 
 class ProjectsPostListView(ListView):
     """Projects page (home)"""
@@ -46,13 +46,16 @@ def project_post_carousel(request, slug):
 
 def tutor(request):
     """tutor page"""
-    return render(request, 'base/tutor.html')
+    context = {
+        'STRIPE_TEST_PK': settings.STRIPE_TEST_PK
+    }
+    return render(request, 'base/tutor.html', context)
 
 def charge(request):
-    amount = 5
-
+    '''Stripe charge process'''
     if request.method == 'POST':
         print('Data: ', request.POST)
+        amount = int(request.POST['amount'])
 
         customer = stripe.Customer.create(
 			name=request.POST['name'],
@@ -71,5 +74,6 @@ def charge(request):
 
 
 def successMsg(request, args):
+    '''Presents a success message'''
     amount = args
     return render(request, 'base/tutor_success.html', {'amount':amount})
