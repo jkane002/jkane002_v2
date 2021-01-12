@@ -424,3 +424,11 @@ a.article-title:hover {
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
 }
+
+.checkout-container {
+  background-color: #a2cbca;
+  border-radius: 20px;
+  -webkit-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+  -moz-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+  box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+}

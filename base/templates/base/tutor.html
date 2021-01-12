@@ -2,125 +2,85 @@
 {% load static %}
 {% block content %}
 
-<!-- Stripe API -->
-<script src="https://js.stripe.com/v3/"></script>
-
 <section>
-    <section>
-        <div class="row">
-            <div class="col-lg-4 ml-auto text-center text-white">
-                <div class="about-links pb-1 m-3">
-                    <!-- form? -->
-                    <form action="{% url 'tutor-charge' %}" method="post" id="payment-form" class="m-5">
+    <div class="row">
+        <div class="col-lg-5 ml-auto text-center">
+            <div class="checkout-container pb-1 m-3">
+                <!-- form? -->
+                <!-- <form method="post" class="m-5">
                         {% csrf_token %}
+                        <div>
+                            <label for="amount">Choose Amount:</label>
+                            <br>
+                            <select required name="amount" id="amount">
+                                <option value="175">$175 --- 5 weeks</option>
+                                <option value="350">$350 --- 10 weeks</option>
+                                <option selected value="525">$525 --- 15 weeks (recommended)</option>
+                                <option value="700">$700 --- 20 weeks</option>
+                            </select>
+                        </div> -->
 
-                        <input required type="text" name="name" placeholder="Name">
-                        <input required type="text" name="email" placeholder="Email">
-
-                        <div class="form-row">
+                <!-- <div class="form-row">
                             <label for="card-element">
                                 Credit or debit card
                             </label>
                             <div id="card-element" style="width: 30em">
-                                <!-- A Stripe Element will be inserted here. -->
+                                A Stripe Element will be inserted here.
                             </div>
 
-                            <!-- Used to display form errors. -->
+                            Used to display form errors.
                             <div id="card-errors" role="alert"></div>
-                        </div>
+                        </div> -->
 
-                        <button>Submit Payment</button>
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg-6 m-auto p-auto text-white">
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean
-                    massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-
-                </p>
-                <p>
-                    Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis
-                    enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-                </p>
-                <p>
-                    In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis
-                    pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
-                    tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante,
-                    dapibus in, viverra quis </p>
+                <button class="btn btn-primary m-1" id="buy_now_btn">Submit Payment</button>
+                <!-- </form> -->
             </div>
         </div>
-    </section>
+        <div class="col-lg-5 m-auto p-auto text-white">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean
+                massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            </p>
+            <p>
+                Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis
+                enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+            </p>
+            <p>
+                In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis
+                pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
+                tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante,
+                dapibus in, viverra quis
+            </p>
+        </div>
+    </div>
 </section>
-
+<!-- Stripe API -->
+<script src="https://js.stripe.com/v3/"></script>
 <script>
-    // Create a Stripe client.
-    var stripe = Stripe('pk_test_51I5Q7mI1xA2AfvmHXd4gxh7IvCfKdMf2p1DUZMtjnC2Z1EU5VkPSRW6pIQKW95Vh9wIhe8DEI0ce8cMtHlHBIdyV00xba8IY5d');
+    // Locate buy button
+    const buy_now_btn = document.querySelector('#buy_now_btn')
 
-    // Create an instance of Elements.
-    var elements = stripe.elements();
+    buy_now_btn.addEventListener('click', event => {
+        // Call your backend to create the Checkout Session
+        fetch('/tutor/charge/', {
+            method: 'POST',
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (session) {
+                var stripe = Stripe(session.STRIPE_TEST_PK);
+                return stripe.redirectToCheckout({ sessionId: session.session_id });
+            })
+            .then(function (result) {
+                // If `redirectToCheckout` fails due to a browser or network
+                // error, you should display the localized error message to your
+                // customer using `error.message`.
 
-    // Custom styling can be passed to options when creating an Element.
-    // (Note that this demo uses a wider set of styles than the guide below.)
-    var style = {
-        base: {
-            color: '#32325d',
-            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-            fontSmoothing: 'antialiased',
-            fontSize: '16px',
-            '::placeholder': {
-                color: '#aab7c4'
-            }
-        },
-        invalid: {
-            color: '#fa755a',
-            iconColor: '#fa755a'
-        }
-    };
-
-    // Create an instance of the card Element.
-    var card = elements.create('card', { style: style });
-
-    // Add an instance of the card Element into the `card-element` <div>.
-    card.mount('#card-element');
-    // Handle real-time validation errors from the card Element.
-    card.on('change', function (event) {
-        var displayError = document.getElementById('card-errors');
-        if (event.error) {
-            displayError.textContent = event.error.message;
-        } else {
-            displayError.textContent = '';
-        }
-    });
-
-    // Handle form submission.
-    var form = document.getElementById('payment-form');
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        stripe.createToken(card).then(function (result) {
-            if (result.error) {
-                // Inform the user if there was an error.
-                var errorElement = document.getElementById('card-errors');
-                errorElement.textContent = result.error.message;
-            } else {
-                // Send the token to your server.
-                stripeTokenHandler(result.token);
-            }
-        });
-    });
-
-    // Submit the form with the token ID.
-    function stripeTokenHandler(token) {
-        // Insert the token ID into the form so it gets submitted to the server
-        var form = document.getElementById('payment-form');
-        var hiddenInput = document.createElement('input');
-        hiddenInput.setAttribute('type', 'hidden');
-        hiddenInput.setAttribute('name', 'stripeToken');
-        hiddenInput.setAttribute('value', token.id);
-        form.appendChild(hiddenInput);
-
-        // Submit the form
-        form.submit();
-    }
+                // TODO: Alert on screen 
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            });
+    })
 </script>
 {% endblock content %}

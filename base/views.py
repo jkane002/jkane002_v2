@@ -3,6 +3,7 @@ from django.conf import settings
 
 from .models import ProjectPost, ProjectPostImage
 from django.views.generic import ListView
+from django.views.decorators.csrf import csrf_exempt
 
 from django.urls import reverse
 from django.http import JsonResponse
@@ -46,34 +47,30 @@ def project_post_carousel(request, slug):
 
 def tutor(request):
     """tutor page"""
-    context = {
-        'STRIPE_TEST_PK': settings.STRIPE_TEST_PK
-    }
-    return render(request, 'base/tutor.html', context)
+    return render(request, 'base/tutor.html')
 
+# ok to redirect to Stripe
+@csrf_exempt
 def charge(request):
     '''Stripe charge process'''
-    if request.method == 'POST':
-        print('Data: ', request.POST)
-        amount = int(request.POST['amount'])
+    session = stripe.checkout.Session.create(
+        success_url=request.build_absolute_uri(reverse('tutor-success')) + '?success_id={CHECKOUT_SESSION_ID}',
+        cancel_url=request.build_absolute_uri(reverse('tutor-page')),
+        payment_method_types=["card"],
+        line_items=[
+            {
+                "price": "price_1I8HMjI1xA2AfvmHJHZoD403",
+                "quantity": 1,
+            },
+        ],
+        mode="payment",
+    )
+   
+    return JsonResponse({
+        'session_id' : session.id,
+        'STRIPE_TEST_PK': settings.STRIPE_TEST_PK
+    })
 
-        customer = stripe.Customer.create(
-			name=request.POST['name'],
-			email=request.POST['email'],
-			source=request.POST['stripeToken']
-			)
-
-        charge = stripe.Charge.create(
-			customer=customer,
-			amount=amount*100,
-			currency='usd',
-			description="Tutoring"
-			)
-        
-    return redirect(reverse('tutor-success', args=[amount]))
-
-
-def successMsg(request, args):
-    '''Presents a success message'''
-    amount = args
-    return render(request, 'base/tutor_success.html', {'amount':amount})
+def successMsg(request):
+    '''Presents a success/thank you message'''
+    return render(request, 'base/tutor_success.html')

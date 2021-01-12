@@ -9,5 +9,5 @@ urlpatterns = [
     path('about/', views.about, name='about-page'),
     path('tutor/', views.tutor, name='tutor-page'),
     path('tutor/charge/', views.charge, name='tutor-charge'),
-    path('tutor/success/<str:args>/', views.successMsg, name='tutor-success'),
+    path('tutor/success/', views.successMsg, name='tutor-success'),
 ]
