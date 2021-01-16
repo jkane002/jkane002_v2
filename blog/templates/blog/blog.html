@@ -1,52 +1,52 @@
 {% extends 'base/index.html' %}
 {% load static %}
 {% block content %}
-<section>
-    <div class="row">
-        <div class="col-lg-8 mx-auto">
-            {% for post in blogposts %}
-            <article class="media mx-5 mb-2">
-                <div class="media-body">
-                    <h3><a class="article-title" href="{% url 'blog-post-detail' post.id %}">{{ post.title }}</a></h3>
-                    <div class="article-metadata">
-                        <small> Jonathan Kaneshiro | {{ post.date_posted | date:"M d, Y" }}</small>
-                    </div>
-                    <a class="article-title" href="{% url 'blog-post-detail' post.id %}">
-                        <p class="article-content">{{ post.content | safe |truncatechars:100 }}</p>
-                    </a>
+
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        {% for post in blogposts %}
+        <article class="media mx-5 mb-2">
+            <div class="media-body">
+                <h3><a class="article-title" href="{% url 'blog-post-detail' post.id %}">{{ post.title }}</a></h3>
+                <div class="article-metadata">
+                    <small> Jonathan Kaneshiro | {{ post.date_posted | date:"M d, Y" }}</small>
                 </div>
-            </article>
-            {% endfor %}
-        </div>
-
-        {% block sidebar %}
-        {% include 'blog/sidebar.html' %}
-        {% endblock sidebar %}
-    </div>
-
-    <div class="pagination mb-5">
-        <!-- TODO: Work on 404 error page -->
-        {% if is_paginated %}
-        {% if page_obj.has_previous %}
-        <a class="btn btn-outline-info mb-4 mx-1" href="?page={{ page_obj.previous_page_number }}">&laquo</a>
-        {% else %}
-        <a class="btn btn-outline-info disabled mb-4 mx-1">&laquo</a>
-        {% endif %}
-
-        {% for num in page_obj.paginator.page_range %}
-        {% if page_obj.number == num %}
-        <a class="btn btn-info mb-4 mx-1" href="?page={{ num }}">{{ num }}</a>
-        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-        <a class="btn btn-outline-info mb-4 mx-1" href="?page={{ num }}">{{ num }}</a>
-        {% endif %}
+                <a class="article-title" href="{% url 'blog-post-detail' post.id %}">
+                    <p class="article-content">{{ post.content | safe |truncatechars:100 }}</p>
+                </a>
+            </div>
+        </article>
         {% endfor %}
-
-        {% if page_obj.has_next %}
-        <a class="btn btn-outline-info mb-4 mx-1" href="?page={{ page_obj.next_page_number }}">&raquo</a>
-        {% else %}
-        <a class="btn btn-outline-info disabled mb-4 mx-1">&raquo</a>
-        {% endif %}
-        {% endif %}
     </div>
-</section>
+
+    {% block sidebar %}
+    {% include 'blog/sidebar.html' %}
+    {% endblock sidebar %}
+</div>
+
+<div class="pagination pb-5">
+    <!-- TODO: Work on 404 error page -->
+    {% if is_paginated %}
+    {% if page_obj.has_previous %}
+    <a class="btn btn-outline-info mb-4 mx-1" href="?page={{ page_obj.previous_page_number }}">&laquo</a>
+    {% else %}
+    <a class="btn btn-outline-info disabled mb-4 mx-1">&laquo</a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+    {% if page_obj.number == num %}
+    <a class="btn btn-info mb-4 mx-1" href="?page={{ num }}">{{ num }}</a>
+    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+    <a class="btn btn-outline-info mb-4 mx-1" href="?page={{ num }}">{{ num }}</a>
+    {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+    <a class="btn btn-outline-info mb-4 mx-1" href="?page={{ page_obj.next_page_number }}">&raquo</a>
+    {% else %}
+    <a class="btn btn-outline-info disabled mb-4 mx-1">&raquo</a>
+    {% endif %}
+    {% endif %}
+</div>
+
 {% endblock content %}
