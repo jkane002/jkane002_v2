@@ -51,19 +51,50 @@ def tutor(request):
 
 # ok to redirect to Stripe
 @csrf_exempt
-def charge(request):
+def charge(request, args):
     '''Stripe charge process'''
+    print("args: "+args)
+
+    # Dictionary containing Price IDs & payment modes
+    price_list = {
+       "5weeks_Full" : {
+            "price_id" : settings.FULL_5_WEEKS_TEST,
+            "mode" : "payment"   
+        },
+        "10weeks_Full" : {
+            "price_id" : settings.FULL_10_WEEKS_TEST,
+            "mode" : "payment"
+        },
+        "15weeks_Full" : {
+            "price_id" : settings.FULL_15_WEEKS_TEST,
+            "mode" : "payment"
+        },
+        "20weeks_Full" : {
+            "price_id" : settings.FULL_20_WEEKS_TEST,
+            "mode" : "payment"
+        },
+        # "5weeks_Weekly" : {
+        #     "price_id" : settings.WEEKLY_SUB_TEST,
+        #     "mode" : "subscription"
+        # },
+        # {
+        #     "5weeks_Weekly" : settings.WEEKLY_SUB_TEST,
+        #     "10weeks_Weekly" : settings.WEEKLY_SUB_TEST,
+        #     "15weeks_Weekly" : settings.WEEKLY_SUB_TEST,
+        #     "20weeks_Weekly" : settings.WEEKLY_SUB_TEST,
+        # },
+    }
     session = stripe.checkout.Session.create(
         success_url=request.build_absolute_uri(reverse('tutor-success')) + '?success_id={CHECKOUT_SESSION_ID}',
         cancel_url=request.build_absolute_uri(reverse('tutor-page')),
         payment_method_types=["card"],
         line_items=[
             {
-                "price": "price_1I8HMjI1xA2AfvmHJHZoD403",
+                "price": price_list[args]["price_id"],
                 "quantity": 1,
             },
         ],
-        mode="payment",
+        mode=price_list[args]["mode"],
     )
    
     return JsonResponse({
@@ -74,3 +105,31 @@ def charge(request):
 def successMsg(request):
     '''Presents a success/thank you message'''
     return render(request, 'base/tutor_success.html')
+
+# @csrf_exempt
+# def stripe_webhook(request):
+#     payload = request.body
+#     event = None
+
+#     try:
+#         event = stripe.Event.construct_from(
+#             json.loads(payload), stripe.api_key
+#         )
+#     except ValueError as e:
+#         # Invalid payload
+#         return HttpResponse(status=400)
+
+#     # Handle the event
+#     if event.type == 'payment_intent.succeeded':
+#         payment_intent = event.data.object # contains a stripe.PaymentIntent
+#         # Then define and call a method to handle the successful payment intent.
+#         # handle_payment_intent_succeeded(payment_intent)
+#     elif event.type == 'payment_method.attached':
+#         payment_method = event.data.object # contains a stripe.PaymentMethod
+#         # Then define and call a method to handle the successful attachment of a PaymentMethod.
+#         # handle_payment_method_attached(payment_method)
+#         # ... handle other event types
+#     else:
+#         print('Unhandled event type {}'.format(event.type))
+
+#     return HttpResponse(status=200)

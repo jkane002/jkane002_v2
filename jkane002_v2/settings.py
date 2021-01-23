@@ -125,10 +125,26 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'base/static/images')
 
-# Stripe API Keys
 if DEBUG:
+    # TODO: edit test and live names ()
+    # Stripe API Test Keys
     STRIPE_TEST_PK = os.environ.get('STRIPE_TEST_PK')
     STRIPE_TEST_SK = os.environ.get('STRIPE_TEST_SK')
+
+    # Stripe Price ID API Test Keys
+    FULL_5_WEEKS_TEST = os.environ.get('FULL_5_WEEKS_TEST')
+    FULL_10_WEEKS_TEST = os.environ.get('FULL_10_WEEKS_TEST')
+    FULL_15_WEEKS_TEST = os.environ.get('FULL_15_WEEKS_TEST')
+    FULL_20_WEEKS_TEST = os.environ.get('FULL_20_WEEKS_TEST')
+    WEEKLY_SUB_TEST = os.environ.get('WEEKLY_SUB_TEST')
 else:
+    # Stripe API Live Keys
     STRIPE_LIVE_PK = os.environ.get('STRIPE_LIVE_PK')
     STRIPE_LIVE_SK = os.environ.get('STRIPE_LIVE_SK')
+
+    # Stripe Price ID API Test Keys
+    FULL_5_WEEKS_LIVE = os.environ.get('FULL_5_WEEKS_LIVE')
+    FULL_10_WEEKS_LIVE = os.environ.get('FULL_10_WEEKS_LIVE') 
+    FULL_15_WEEKS_LIVE = os.environ.get('FULL_15_WEEKS_LIVE') 
+    FULL_20_WEEKS_LIVE = os.environ.get('FULL_20_WEEKS_LIVE') 
+    WEEKLY_SUB_LIVE = os.environ.get('WEEKLY_SUB_LIVE') 

@@ -2,10 +2,49 @@
 {% load static %}
 {% block content %}
 
-<div class="row" style="height: 100%;">
+<div class="row">
     <div class="col-lg-5 ml-auto text-center">
         <div class="checkout-container pb-1">
-            <button class="btn btn-primary m-1" id="buy_now_btn">Submit Payment</button>
+            <!-- <form method="post"> -->
+            <!-- {% csrf_token %} -->
+            <div class="p-5">
+                <!-- Calculations -->
+                <h1 id="tutor-total" class="pb-2">Total</h1>
+                <h3 class="text-center">
+                    <span>$35 x </span>
+                    <span id="course-length">_ weeks</span>
+                </h3>
+                <h4 id="payment-sched">Select Payment Schedule</h4>
+
+                <!-- Course Length choices -->
+                <div>
+                    <label for="length">Course Length:</label>
+                    <br>
+                    <select required name="length" id="length" onchange="calculateTotal()">
+                        <option selected value="0">--Select Course Length--</option>
+                        <option value="5"> 5 weeks</option>
+                        <option value="10"> 10 weeks</option>
+                        <option value="15"> 15 weeks (recommended)</option>
+                        <option value="20">20 weeks</option>
+                        <!-- <option value="custom" id="custom">Custom</option> -->
+                    </select>
+                </div>
+
+                <!-- Payment Schedule choices -->
+                <div>
+                    <label for="payment">Payment Schedule:</label>
+                    <br>
+                    <select required name="payment" id="payment" onchange="choosePaymentSchedule()">
+                        <option selected value="0">--Select Payment Schedule--</option>
+                        <option value="Full" id="full">Full (recommended)</option>
+                        <option value="Weekly">Weekly</option>
+                    </select>
+                </div>
+
+                <!-- Submit Button -->
+                <button class="btn btn-primary m-2" id="checkout-button">Proceed to Checkout</button>
+            </div>
+            <!-- </form> -->
         </div>
     </div>
     <div class="col-lg-5 m-auto p-auto">
@@ -26,8 +65,8 @@
         <h3>Payment</h3>
         <ul>
             <li>Pay Rate - $35 / hourly, 1 hour per week</li>
-            <li>10 weeks, 15 weeks, or 20 weeks of tutoring</li>
-            <li>Payment transferred in full amount (preferred), weekly, or biweekly</li>
+            <li>5, 10, 15, or 20 weeks of tutoring</li>
+            <li>Payment transferred in full amount or weekly</li>
             <li>Inquire for custom hours / course length</li>
         </ul>
     </div>
@@ -36,31 +75,77 @@
 <!-- Stripe API -->
 <script src="https://js.stripe.com/v3/"></script>
 <script>
+
+    // Calculate total for tutoring
+    function calculateTotal() {
+        const courselength = document.getElementById("length").value;
+        const baserate = 35;
+        const res = courselength * baserate;
+
+        if (courselength == "0") {
+            document.getElementById("course-length").innerHTML = "_ weeks";
+            document.getElementById("tutor-total").innerHTML = "Total";
+        } else if (courselength) {
+            document.getElementById("course-length").innerHTML = String(courselength) + " weeks";
+            document.getElementById("tutor-total").innerHTML = "$" + String(res);
+        } else if (courselength == "custom") {
+            document.getElementById("course-length").innerHTML = String(courselength) + " weeks";
+            document.getElementById("tutor-total").innerHTML = "???";
+        } else {
+            console.error("ERROR in calculateTotal()")
+        }
+
+        return courselength;
+    }
+
+    // Choosing Payment schedule
+    function choosePaymentSchedule() {
+        const paymentchoice = document.getElementById("payment").value;
+        if (paymentchoice == "0")
+            document.getElementById("payment-sched").innerHTML = "Select Payment Schedule";
+        else if (paymentchoice)
+            document.getElementById("payment-sched").innerHTML = paymentchoice;
+        else
+            console.error("ERROR in choosePaymentSchedule()")
+
+        return paymentchoice
+    }
+
     // Locate buy button
-    const buy_now_btn = document.querySelector('#buy_now_btn')
+    const buy_now_btn = document.querySelector('#checkout-button')
 
     buy_now_btn.addEventListener('click', event => {
-        // Call your backend to create the Checkout Session
-        fetch('/tutor/charge/', {
-            method: 'POST',
-        })
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (session) {
-                var stripe = Stripe(session.STRIPE_TEST_PK);
-                return stripe.redirectToCheckout({ sessionId: session.session_id });
-            })
-            .then(function (result) {
-                // If `redirectToCheckout` fails due to a browser or network
-                // error, you should display the localized error message to your
-                // customer using `error.message`.
+        // base rate x course length
+        const courselength = calculateTotal()
+        // in full or weekly
+        const payment_schedule = choosePaymentSchedule()
 
-                // TODO: Alert on screen 
-                if (result.error) {
-                    alert(result.error.message);
-                }
-            });
+        if (payment_schedule == "0" || courselength == "0")
+            alert("Please enter the course length and payment schedule");
+        else {
+            const checkout_key = String(courselength) + "weeks_" + String(payment_schedule);
+            // Call your backend to create the Checkout Session
+            fetch('/tutor/charge/' + checkout_key + '/', {
+                method: 'POST',
+            })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (session) {
+                    var stripe = Stripe(session.STRIPE_TEST_PK);
+                    return stripe.redirectToCheckout({ sessionId: session.session_id });
+                })
+                .then(function (result) {
+                    // If `redirectToCheckout` fails due to a browser or network
+                    // error, you should display the localized error message to your
+                    // customer using `error.message`.
+
+                    // TODO: Alert on screen 
+                    if (result.error) {
+                        alert(result.error.message);
+                    }
+                });
+        }
     })
 </script>
 {% endblock content %}
