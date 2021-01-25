@@ -81,11 +81,6 @@
     line-height: 2rem;
   }
 
-.btn-primary.disabled, .btn-primary:disabled {
-  background-color: gray;
-  border-color: gray;
-}
-
   /* Main NavBar */
   
   #mainNav {
@@ -203,7 +198,24 @@
     background-color: #18BC9C;
     border-color: #18BC9C;
   }
-  
+
+/* Tutoring Checkout Button */
+.btn-primary-checkout {
+  background-color: #18BC9C;
+  border-color: #18BC9C;
+  color: white;
+}
+
+.btn-primary-checkout:focus, .btn-primary-checkout:active {
+    background-color: #128f76;
+    border-color: #128f76;
+  }
+.btn-primary-checkout.disabled, .btn-primary-checkout:disabled {
+  background-color: gray;
+  border-color: gray;
+}
+/* Tutoring Checkout Button */
+
   .btn-light {
     background-color: #fff !important;
   }
