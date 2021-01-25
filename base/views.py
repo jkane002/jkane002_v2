@@ -10,7 +10,7 @@ from django.http import JsonResponse
 
 # Tutoring Page
 import stripe
-stripe.api_key = settings.STRIPE_TEST_SK
+stripe.api_key = settings.STRIPE_SK
 
 class ProjectsPostListView(ListView):
     """Projects page (home)"""
@@ -53,36 +53,34 @@ def tutor(request):
 @csrf_exempt
 def charge(request, args):
     '''Stripe charge process'''
-    print("args: "+args)
 
     # Dictionary containing Price IDs & payment modes
     price_list = {
-       "5weeks_Full" : {
-            "price_id" : settings.FULL_5_WEEKS_TEST,
+       "1weeks" : {
+            "price_id" : settings.FULL_1_WEEK,
             "mode" : "payment"   
         },
-        "10weeks_Full" : {
-            "price_id" : settings.FULL_10_WEEKS_TEST,
+       "5weeks" : {
+            "price_id" : settings.FULL_5_WEEKS,
+            "mode" : "payment"   
+        },
+        "10weeks" : {
+            "price_id" : settings.FULL_10_WEEKS,
             "mode" : "payment"
         },
-        "15weeks_Full" : {
-            "price_id" : settings.FULL_15_WEEKS_TEST,
+        "15weeks" : {
+            "price_id" : settings.FULL_15_WEEKS,
             "mode" : "payment"
         },
-        "20weeks_Full" : {
-            "price_id" : settings.FULL_20_WEEKS_TEST,
+        "20weeks" : {
+            "price_id" : settings.FULL_20_WEEKS,
             "mode" : "payment"
         },
+        # TODO: Figure out subscriptions 
         # "5weeks_Weekly" : {
-        #     "price_id" : settings.WEEKLY_SUB_TEST,
+        #     "price_id" : settings.WEEKLY_SUB,
         #     "mode" : "subscription"
-        # },
-        # {
-        #     "5weeks_Weekly" : settings.WEEKLY_SUB_TEST,
-        #     "10weeks_Weekly" : settings.WEEKLY_SUB_TEST,
-        #     "15weeks_Weekly" : settings.WEEKLY_SUB_TEST,
-        #     "20weeks_Weekly" : settings.WEEKLY_SUB_TEST,
-        # },
+        # }, 
     }
     session = stripe.checkout.Session.create(
         success_url=request.build_absolute_uri(reverse('tutor-success')) + '?success_id={CHECKOUT_SESSION_ID}',
@@ -99,7 +97,7 @@ def charge(request, args):
    
     return JsonResponse({
         'session_id' : session.id,
-        'STRIPE_TEST_PK': settings.STRIPE_TEST_PK
+        'STRIPE_PK': settings.STRIPE_PK
     })
 
 def successMsg(request):
