@@ -5,23 +5,23 @@
 <div class="row">
     <div class="col-lg-5 ml-auto text-center">
         <div class="checkout-container pb-1">
-            <!-- <form method="post"> -->
-            <!-- {% csrf_token %} -->
             <div class="p-5">
                 <!-- Calculations -->
                 <h1 id="tutor-total" class="pb-2">Total</h1>
                 <h3 class="text-center">
-                    <span>$35 x </span>
+                    <span id="base-rate">$__</span>
+                    <span>x </span>
                     <span id="course-length">_ weeks</span>
                 </h3>
-                <h4 id="payment-sched">Select Payment Schedule</h4>
+                <!-- <h4 id="payment-sched">Select Payment Schedule</h4> -->
 
                 <!-- Course Length choices -->
-                <div>
+                <div class="mt-4">
                     <label for="length">Course Length:</label>
                     <br>
                     <select required name="length" id="length" onchange="calculateTotal()">
-                        <option selected value="0">--Select Course Length--</option>
+                        <option selected value="0">----Select Course Length----</option>
+                        <option value="1"> 1 session (weekly payments)</option>
                         <option value="5"> 5 weeks</option>
                         <option value="10"> 10 weeks</option>
                         <option value="15"> 15 weeks (recommended)</option>
@@ -31,7 +31,7 @@
                 </div>
 
                 <!-- Payment Schedule choices -->
-                <div>
+                <!-- <div>
                     <label for="payment">Payment Schedule:</label>
                     <br>
                     <select required name="payment" id="payment" onchange="choosePaymentSchedule()">
@@ -39,35 +39,46 @@
                         <option value="Full" id="full">Full (recommended)</option>
                         <option value="Weekly">Weekly</option>
                     </select>
-                </div>
+                </div> -->
 
-                <!-- Submit Button -->
-                <button class="btn btn-primary m-2" id="checkout-button">Proceed to Checkout</button>
+                <!-- Checkout Button -->
+                <button class="btn btn-primary mx-2 mt-3" id="checkout-button" disabled>Proceed to Checkout</button>
+
+                <h5 class="mt-5">
+                    Full Payment - $35 / session
+                    <br>
+                    Weekly payment - $36 / session
+                </h5>
             </div>
-            <!-- </form> -->
         </div>
     </div>
     <div class="col-lg-5 m-auto p-auto">
-        <h3>Tutoring Services</h3>
+        <h4>Tutoring Services</h4>
         <ul>
             <li>One-on-one Python / Computer Science tutoring</li>
             <li>Specialized lessons for each student</li>
             <li>Learn at your own pace</li>
             <li>Meet once a week at a specified date and time</li>
         </ul>
-        <h3>Means of Communication</h3>
+        <h4>Means of Communication</h4>
         <ul>
             <li>Lessons conducted via Skype (preferred), Google Hangout, or Zoom</li>
             <li>General communication via email</li>
             <li>Summary of each lesson is given after each session</li>
             <li>Initial email outlining curriculum</li>
         </ul>
-        <h3>Payment</h3>
+        <h4>Payment</h4>
         <ul>
-            <li>Pay Rate - $35 / hourly, 1 hour per week</li>
+            <li>Pay Rate - $35 / $36 per session, 1 hour per week</li>
             <li>5, 10, 15, or 20 weeks of tutoring</li>
             <li>Payment transferred in full amount or weekly</li>
             <li>Inquire for custom hours / course length</li>
+        </ul>
+        <h4>Contact</h4>
+        <ul>
+            <li><a href="mailto:jkaneshiro97@gmail.com?subject=Tutoring Inquiry">
+                    Please send an email before submitting payments.</a>
+            </li>
         </ul>
     </div>
 </div>
@@ -80,36 +91,54 @@
     function calculateTotal() {
         const courselength = document.getElementById("length").value;
         const baserate = 35;
+        const baserate_single = 36;
         const res = courselength * baserate;
 
         if (courselength == "0") {
+            // default selection
+            document.getElementById("checkout-button").disabled = true;
             document.getElementById("course-length").innerHTML = "_ weeks";
             document.getElementById("tutor-total").innerHTML = "Total";
+            document.getElementById("base-rate").innerHTML = "$__";
+        } else if (courselength == "1") {
+            // 1 week session
+            document.getElementById("checkout-button").disabled = false;
+            document.getElementById("course-length").innerHTML = String(courselength) + " week";
+            document.getElementById("tutor-total").innerHTML = "$" + String(courselength * baserate_single);
+            document.getElementById("base-rate").innerHTML = "$" + String(baserate_single);
         } else if (courselength) {
+            // other sessions
+            document.getElementById("checkout-button").disabled = false;
             document.getElementById("course-length").innerHTML = String(courselength) + " weeks";
             document.getElementById("tutor-total").innerHTML = "$" + String(res);
-        } else if (courselength == "custom") {
-            document.getElementById("course-length").innerHTML = String(courselength) + " weeks";
-            document.getElementById("tutor-total").innerHTML = "???";
-        } else {
+            document.getElementById("base-rate").innerHTML = "$" + String(baserate);
+        }
+        // TODO: custom weeks for subscription
+        // else if (courselength == "custom") {
+        //     document.getElementById("course-length").innerHTML = String(courselength) + " weeks";
+        //     document.getElementById("tutor-total").innerHTML = "???";
+        //     document.getElementById("base-rate").innerHTML = "$" + String(baserate);
+        // } 
+        else {
             console.error("ERROR in calculateTotal()")
+            alert("ERROR in calculateTotal()")
         }
 
         return courselength;
     }
 
     // Choosing Payment schedule
-    function choosePaymentSchedule() {
-        const paymentchoice = document.getElementById("payment").value;
-        if (paymentchoice == "0")
-            document.getElementById("payment-sched").innerHTML = "Select Payment Schedule";
-        else if (paymentchoice)
-            document.getElementById("payment-sched").innerHTML = paymentchoice;
-        else
-            console.error("ERROR in choosePaymentSchedule()")
+    // function choosePaymentSchedule() {
+    //     const paymentchoice = document.getElementById("payment").value;
+    //     if (paymentchoice == "0")
+    //         document.getElementById("payment-sched").innerHTML = "Select Payment Schedule";
+    //     else if (paymentchoice)
+    //         document.getElementById("payment-sched").innerHTML = paymentchoice;
+    //     else
+    //         console.error("ERROR in choosePaymentSchedule()")
 
-        return paymentchoice
-    }
+    //     return paymentchoice
+    // }
 
     // Locate buy button
     const buy_now_btn = document.querySelector('#checkout-button')
@@ -117,35 +146,35 @@
     buy_now_btn.addEventListener('click', event => {
         // base rate x course length
         const courselength = calculateTotal()
+
+        // TODO: For weekly subscriptions
         // in full or weekly
-        const payment_schedule = choosePaymentSchedule()
+        // const payment_schedule = choosePaymentSchedule()
+        // const checkout_key = String(courselength) + "weeks_" + String(payment_schedule);
 
-        if (payment_schedule == "0" || courselength == "0")
-            alert("Please enter the course length and payment schedule");
-        else {
-            const checkout_key = String(courselength) + "weeks_" + String(payment_schedule);
-            // Call your backend to create the Checkout Session
-            fetch('/tutor/charge/' + checkout_key + '/', {
-                method: 'POST',
+        const checkout_key = String(courselength) + "weeks";
+
+        // Call your backend to create the Checkout Session
+        fetch('/tutor/charge/' + checkout_key + '/', {
+            method: 'POST',
+        })
+            .then(function (response) {
+                return response.json();
             })
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (session) {
-                    var stripe = Stripe(session.STRIPE_TEST_PK);
-                    return stripe.redirectToCheckout({ sessionId: session.session_id });
-                })
-                .then(function (result) {
-                    // If `redirectToCheckout` fails due to a browser or network
-                    // error, you should display the localized error message to your
-                    // customer using `error.message`.
+            .then(function (session) {
+                var stripe = Stripe(session.STRIPE_PK);
+                return stripe.redirectToCheckout({ sessionId: session.session_id });
+            })
+            .then(function (result) {
+                // If `redirectToCheckout` fails due to a browser or network
+                // error, you should display the localized error message to your
+                // customer using `error.message`.
 
-                    // TODO: Alert on screen 
-                    if (result.error) {
-                        alert(result.error.message);
-                    }
-                });
-        }
+                // TODO: Alert on screen 
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            });
     })
 </script>
 {% endblock content %}
