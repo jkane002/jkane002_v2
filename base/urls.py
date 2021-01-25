@@ -10,4 +10,5 @@ urlpatterns = [
     path('tutor/', views.tutor, name='tutor-page'),
     path('tutor/charge/<str:args>/', views.charge, name='tutor-charge'),
     path('tutor/success/', views.successMsg, name='tutor-success'),
+    path('stripe_webhook/', views.stripe_webhook, name='stripe_webhook'),
 ]

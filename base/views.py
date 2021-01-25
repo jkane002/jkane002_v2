@@ -4,9 +4,11 @@ from django.conf import settings
 from .models import ProjectPost, ProjectPostImage
 from django.views.generic import ListView
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 
 from django.urls import reverse
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
+import json
 
 # Tutoring Page
 import stripe
@@ -104,30 +106,32 @@ def successMsg(request):
     '''Presents a success/thank you message'''
     return render(request, 'base/tutor_success.html')
 
-# @csrf_exempt
-# def stripe_webhook(request):
-#     payload = request.body
-#     event = None
+@require_POST
+@csrf_exempt
+def stripe_webhook(request):
+    print("WEBHOOK!")
+    payload = request.body
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    event = None
+ 
+    try:
+        event = stripe.Event.construct_from(
+            json.loads(payload), sig_header, stripe.api_key
+        )
+    except ValueError as e:
+        # Invalid payload
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError as e:
+        # Invalid signature
+        return HttpResponse(status=400)
 
-#     try:
-#         event = stripe.Event.construct_from(
-#             json.loads(payload), stripe.api_key
-#         )
-#     except ValueError as e:
-#         # Invalid payload
-#         return HttpResponse(status=400)
+    # Handle the event
+    if event.type == 'checkout.session.completed':
+        session = event.data.object # contains a stripe.PaymentIntent
+        print(session)
+        # Then define and call a method to handle the successful payment intent.
+        # handle_payment_intent_succeeded(payment_intent)
+    else:
+        print('Unhandled event type {}'.format(event.type))
 
-#     # Handle the event
-#     if event.type == 'payment_intent.succeeded':
-#         payment_intent = event.data.object # contains a stripe.PaymentIntent
-#         # Then define and call a method to handle the successful payment intent.
-#         # handle_payment_intent_succeeded(payment_intent)
-#     elif event.type == 'payment_method.attached':
-#         payment_method = event.data.object # contains a stripe.PaymentMethod
-#         # Then define and call a method to handle the successful attachment of a PaymentMethod.
-#         # handle_payment_method_attached(payment_method)
-#         # ... handle other event types
-#     else:
-#         print('Unhandled event type {}'.format(event.type))
-
-#     return HttpResponse(status=200)
+    return HttpResponse(status=200)
