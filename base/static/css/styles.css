@@ -1,120 +1,90 @@
- /* Overall Tags */
- html, body {
-    font-family: 'Lato';
-    background-color: #98C6C5;
-    margin: 0;
-    padding: 0;
-    height: 90%;
+/* Overall Tags */
+html, body {
+  font-family: 'Lato';
+  background-color: #98C6C5;
+  margin: 0;
+  padding: 0;
+  height: 90%;
   }
   
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: 700;
-    font-family: 'Montserrat';
-    color:  #17202A;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  font-family: 'Montserrat';
+  color:  #17202A;
+}
 
-  p {
-    color: #17202A ;
-  }
-  
-  a {
-    color: #17202A;
-  }
-  
-  a:focus, a:hover, a:active {
-    color: #17202A;
-  }
+p {
+  color: #17202A ;
+}
 
-  ul.no-bullets {
-    list-style-type: none; /* Remove bullets */
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margins */
-  }
-  
-  section {
-    padding: 1rem 0;
-  }
+a {
+  color: #17202A;
+}
 
-  /* Main NavBar */
-  
-  #mainNav {
-    /* padding-top: 1rem;
-    padding-bottom: 1rem; */
-    font-weight: 700;
-    font-family: 'Montserrat';
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    background-color: #17202A !important;
-  }
-  
-  #mainNav .navbar-nav {
-    margin-top: 1rem;
-    letter-spacing: 0.0625rem;
-  }
-  
-  /* background inactive text color */
-  #mainNav .navbar-nav li.nav-item a.nav-link {
-    color: #d8d8d8;
-  }
-  
-  /* hover color */
-  #mainNav .navbar-nav li.nav-item a.nav-link:hover {
-    color: #fff;
-    /* text-decoration: underline; */
-  }
-  /* pressed down color */
-  #mainNav .navbar-nav li.nav-item a.nav-link:active, #mainNav .navbar-nav li.nav-item a.nav-link:focus {
-    color: #98C6C5;
-  }
-  /* active link */
-  #mainNav .navbar-nav li.nav-item a.nav-link.active {
-    color: #fff;
-    border-bottom: 1px solid white;
-  }
-  
-  #mainNav .navbar-toggler {
-    font-size: 80%;
-  }
-  
-  @media (min-width: 770px) {
-    /* #mainNav {
-      -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
-      transition: padding-top 0.3s, padding-bottom 0.3s;
-    } */
-    #mainNav .navbar-brand {
-      font-size: 2em;
-      -webkit-transition: font-size 0.3s;
-      transition: font-size 0.3s;
-    }
-    #mainNav .navbar-nav {
-      margin-top: 0;
-    }
-    /*  */
-    #mainNav .navbar-nav > li.nav-item > a.nav-link.active {
-      color: #fff;
-      /* background: #000; */
-    }
-    /* #mainNav .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
-      color: #fff;
-      background: #18BC9C;
-    } */
-    #mainNav.navbar-shrink {
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-    }
-    #mainNav.navbar-shrink .navbar-brand {
-      font-size: 1.5em;
-    }
-  }
-  
-  
-.bg-primary {
+a:focus, a:hover, a:active {
+  color: #17202A;
+}
+
+ul.no-bullets {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
+section {
+  padding: 1rem 0;
+}
+
+.row-center {
+  height: 100%;
+  align-items: center;
+}
+
+/* Main NavBar */
+
+#mainNav {
+  font-weight: 700;
+  font-family: 'Montserrat';
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
   background-color: #17202A !important;
+}
+
+#mainNav .navbar-nav {
+  /* keep */
+  letter-spacing: 0.0625rem;
+}
+  
+/* background inactive text color */
+#mainNav .navbar-nav li.nav-item a.nav-link {
+  color: #d8d8d8;
+}
+
+/* hover color */
+#mainNav .navbar-nav li.nav-item a.nav-link:hover {
+  color: #fff;
+}
+/* pressed down color */
+#mainNav .navbar-nav li.nav-item a.nav-link:active, #mainNav .navbar-nav li.nav-item a.nav-link:focus {
+  color: #98C6C5;
+}
+/* active link */
+#mainNav .navbar-nav li.nav-item a.nav-link.active {
+  color: #fff;
+  border-bottom: 1px solid white;
+}
+
+#mainNav .navbar-toggler {
+  font-size: 80%;
+}
+
+#navbar_icon {
+  background-color: #98C6C5;
 }
 
 .btn {
@@ -300,7 +270,7 @@ a.article-title:hover {
   box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
 }
 
-@media (max-width: 770px) {
+@media (max-width: 768px) {
   #tutor-info {
     padding: 10%;
     padding-bottom: 20%;
@@ -323,6 +293,7 @@ a.article-title:hover {
   }
   
   #about-info {
+    padding: 10%;
     padding-bottom: 20%;
   }
   
