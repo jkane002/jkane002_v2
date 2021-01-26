@@ -19,8 +19,10 @@ class ProjectsPostListView(ListView):
     model = ProjectPost
     template_name = 'base/projects.html'
     context_object_name = 'posts'
-    ordering = ['-start_date']
-    paginate_by = 3
+    paginate_by = 6
+
+    def get_queryset(self):
+        return ProjectPost.objects.filter(active=True).order_by('-start_date')
 
 def project_post(request, slug):
     '''A single project post with a slug ID & URL'''
