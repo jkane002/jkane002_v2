@@ -155,6 +155,15 @@ section {
   justify-content: center;
 }
 
+@media (min-width: 1440px) {
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 320px);
+    gap:20px;
+    justify-content: center;
+  }
+}
+
 .grid-element {
   background-color: #98C6C5;
   height: 100%;
