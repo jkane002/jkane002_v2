@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.conf import settings
 
 from .models import ProjectPost, ProjectPostImage
@@ -109,6 +109,7 @@ def successMsg(request):
 @require_POST
 @csrf_exempt
 def stripe_webhook(request):
+    '''Stripe Webhook process'''
     print("WEBHOOK!")
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
@@ -127,7 +128,7 @@ def stripe_webhook(request):
 
     # Handle the event
     if event.type == 'checkout.session.completed':
-        session = event.data.object # contains a stripe.PaymentIntent
+        session = event.data.object
         print(session)
         # Then define and call a method to handle the successful payment intent.
         # handle_payment_intent_succeeded(payment_intent)

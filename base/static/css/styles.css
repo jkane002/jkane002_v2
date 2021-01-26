@@ -1,10 +1,4 @@
-/*!
- * Start Bootstrap - Freelancer v5.0.1 (https://startbootstrap.com/template-overviews/freelancer)
- * Copyright 2013-2018 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-freelancer/blob/master/LICENSE)
- */
-
- /* Overall */
+ /* Overall Tags */
  html, body {
     font-family: 'Lato';
     background-color: #98C6C5;
@@ -26,13 +20,8 @@
 
   p {
     color: #17202A ;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
   }
-
-
+  
   a {
     color: #17202A;
   }
@@ -50,36 +39,6 @@
   section {
     padding: 1rem 0;
   }
-  
-  /* @media (min-width: 992px) {
-    section {
-        padding: 3rem 0;
-    }
-  } */
-  
-  section h2 {
-    font-size: 2.25rem;
-    line-height: 2rem;
-  }
-  
-  @media (min-width: 992px) {
-    section h2 {
-      font-size: 3rem;
-      line-height: 2.5rem;
-    }
-  }
-  
-  .btn-xl {
-    padding: 1rem 1.75rem;
-    font-size: 1.25rem;
-  }
-  
-  .btn-social {
-    width: 3.25rem;
-    height: 3.25rem;
-    font-size: 1.25rem;
-    line-height: 2rem;
-  }
 
   /* Main NavBar */
   
@@ -90,6 +49,7 @@
     font-family: 'Montserrat';
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+    background-color: #17202A !important;
   }
   
   #mainNav .navbar-nav {
@@ -119,10 +79,9 @@
   
   #mainNav .navbar-toggler {
     font-size: 80%;
-    padding: 0.8rem;
   }
   
-  @media (min-width: 992px) {
+  @media (min-width: 770px) {
     /* #mainNav {
       -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
       transition: padding-top 0.3s, padding-bottom 0.3s;
@@ -154,50 +113,34 @@
   }
   
   
-  .bg-primary {
-    background-color: #17202A !important;
-  }
-  
-  .bg-nav {
-    background-color: #17202A !important;
-  }
-  
-  /* .bg-about {
-    background-color: #000 !important;
-  } */
-  
-  .text-primary {
-    color: #18BC9C !important;
-  }
-  
-  .text-secondary {
-    color: #000 !important;
-  }
+.bg-primary {
+  background-color: #17202A !important;
+}
 
-  .btn {
-    border-width: 2px;
-    background-color: #a2cbca;
-  }
+.btn {
+  border-width: 2px;
+  background-color: #a2cbca;
+}
 
-  .btn-outline-info {
-    border-color: #17202A;
-    color: #17202A;
-  }
-  .btn-outline-info:hover {
-    border-color: #17202A;
-    background-color: #17202A;
-    color: #fff;
-  }
+.btn-outline-info {
+  border-color: #17202A;
+  color: #17202A;
+}
+.btn-outline-info:hover {
+  border-color: #17202A;
+  background-color: #17202A;
+  color: #fff;
+}
 
-  .btn-info, .btn-info:hover {
-    background-color: #17202A;
-    border-color: #17202A;
-  }
-  
-  .btn-primary {
-    background-color: #18BC9C;
-    border-color: #18BC9C;
-  }
+.btn-info, .btn-info:hover {
+  background-color: #17202A;
+  border-color: #17202A;
+}
+
+.btn-primary {
+  background-color: #18BC9C;
+  border-color: #18BC9C;
+}
 
 /* Tutoring Checkout Button */
 .btn-primary-checkout {
@@ -207,8 +150,8 @@
 }
 
 .btn-primary-checkout:focus, .btn-primary-checkout:active {
-    background-color: #128f76;
-    border-color: #128f76;
+  background-color: #128f76;
+  border-color: #128f76;
   }
 .btn-primary-checkout.disabled, .btn-primary-checkout:disabled {
   background-color: gray;
@@ -216,101 +159,56 @@
 }
 /* Tutoring Checkout Button */
 
-  .btn-light {
-    background-color: #fff !important;
-  }
-  .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-    background-color: #128f76;
-    border-color: #128f76;
-  }
-  
-  .btn-secondary {
-    background-color: #2C3E50;
-    border-color: #2C3E50;
-  }
-  
-  .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
-    background-color: #1a252f;
-    border-color: #1a252f;
-  }
-  
-  .img-fluid-face {
-    max-width: 100%;
-    height: 60vmin;
-    -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -o-user-select: none;
-      user-select: none;
-  }
-  
-  .selectDisable {
-      pointer-events: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -o-user-select: none;
-      user-select: none;
-       -webkit-touch-callout: none;
-       -ms-user-select: none;
-  }
-  
-  canvas {
-    display: align;
-    vertical-align: bottom;
-    z-index: -1;
-    position: fixed;
-  }
-  
-  #particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
-  
-  .selectCardDisable {
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -o-user-select: none;
-      user-select: none;
-       -webkit-touch-callout: none;
-       -ms-user-select: none;
-  }
+.btn-light {
+  background-color: #fff !important;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  background-color: #128f76;
+  border-color: #128f76;
+}
 
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 320px);
-    gap:20px;
-    justify-content: center;
-  }
+.selectDisable {
+  pointer-events: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -ms-user-select: none;
+}
 
-  .grid-element {
-    background-color: #98C6C5;
-    height: 100%;
-    border:1px solid var(--borderColor);
-    border-radius: 15px;
-    -webkit-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
-    -moz-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
-    box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
-  }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 320px);
+  gap:20px;
+  justify-content: center;
+}
 
-  .grid-element:hover {
-    background-color: #a2cbca;
-  }
-  
-  .post-description {
-    margin: 5%;
-  }
-  .thumbnail {
-    display: block;
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 15px;
-  }
+.grid-element {
+  background-color: #98C6C5;
+  height: 100%;
+  border:1px solid var(--borderColor);
+  border-radius: 15px;
+  -webkit-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+  -moz-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+  box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+}
+
+.grid-element:hover {
+  background-color: #a2cbca;
+}
+
+.post-description {
+  margin: 5%;
+}
+.thumbnail {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+}
 
 #me-img {
   width: 200px;
@@ -326,15 +224,6 @@
   -webkit-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
   -moz-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
   box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
-}
-
-@media (max-width: 770px) {
-  .pagination {
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 15%;
-    margin-bottom: 5%;
-  }
 }
 
 .pagination {
@@ -368,8 +257,7 @@ hr.light {
   margin: auto;
 }
 
-/* Blog */
-
+/* ---Blog---*/
 .content-section {
   background: #a2cbca;
   border-radius: 15px;
@@ -401,19 +289,51 @@ a.article-title:hover {
   color: #333;
   text-decoration: none;
 }
+/* ---END Blog---*/
 
-.article-svg {
-  width: 25px;
-  height: 25px;
-  vertical-align: middle;
+
+.checkout-container {
+  background-color: #a2cbca;
+  border-radius: 20px;
+  -webkit-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+  -moz-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+  box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
 }
 
-.account-heading {
-  font-size: 2.5rem;
+@media (max-width: 770px) {
+  #tutor-info {
+    padding: 10%;
+    padding-bottom: 20%;
+  }
+  
+  .checkout-container {
+    margin: 5%;
+    background-color: #a2cbca;
+    border-radius: 20px;
+    -webkit-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+    box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+  }
+  
+  .pagination {
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15%;
+    margin-bottom: 5%;
+  }
+  
+  #about-info {
+    padding-bottom: 20%;
+  }
+  
+  #blog-sidebar {
+    padding: 10%;
+  }
 }
 
 /* STRIPE */
 
+/*
 .StripeElement {
   box-sizing: border-box;
 
@@ -441,11 +361,4 @@ a.article-title:hover {
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
 }
-
-.checkout-container {
-  background-color: #a2cbca;
-  border-radius: 20px;
-  -webkit-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
-  -moz-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
-  box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
-}
+*/
