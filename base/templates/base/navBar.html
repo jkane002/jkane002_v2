@@ -1,11 +1,10 @@
 <!-- Navigation -->
-<nav class="navbar navbar-light navbar-expand-lg fixed-bottom" id="mainNav">
+<nav class="navbar navbar-inverse navbar-light navbar-expand-sm fixed-bottom" id="mainNav">
     <div class="container">
-        <button class="navbar-toggler navbar-toggler-right  bg-primary text-white rounded" type="button"
-            data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <!-- TODO -->
-            <span class="navbar-toggler-icon" style="color: white;"></span>
+        <button class="navbar-toggler rounded" id="navbar_icon" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             {% with request.resolver_match.url_name as url_name %}
