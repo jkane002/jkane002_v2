@@ -1,11 +1,18 @@
+:root {
+  --darkblue: #17202A;
+  --shadow_green: #98C6C5;
+  --light_teal: #a2cbca;
+  --white: #ffffff;
+}
+
 /* Overall Tags */
 html, body {
   font-family: 'Lato';
-  background-color: #98C6C5;
+  background-color: var(--shadow_green);
   margin: 0;
   padding: 0;
   height: 90%;
-  }
+}
   
 h1,
 h2,
@@ -15,19 +22,22 @@ h5,
 h6 {
   font-weight: 700;
   font-family: 'Montserrat';
-  color:  #17202A;
+  color:  var(--darkblue);
 }
 
+/* may change */
 p {
-  color: #17202A ;
+  color: var(--darkblue) ;
 }
 
+/* may change */
 a {
-  color: #17202A;
+  color: var(--darkblue);
 }
 
+/* may change */
 a:focus, a:hover, a:active {
-  color: #17202A;
+  color: var(--darkblue);
 }
 
 ul.no-bullets {
@@ -45,8 +55,54 @@ section {
   align-items: center;
 }
 
-/* Main NavBar */
+.btn {
+  border-width: 2px;
+  background-color: var(--light_teal);
+}
 
+.btn-outline-info {
+  border-color: var(--darkblue);
+  color: var(--darkblue);
+}
+.btn-outline-info:hover {
+  border-color: var(--darkblue);
+  background-color: var(--darkblue);
+  color: var(--white);
+}
+
+.btn-info, .btn-info:hover {
+  background-color: var(--darkblue);
+  border-color: var(--darkblue);
+}
+
+.btn-primary-checkout {
+  background-color: var(--darkblue);
+  border-color: var(--darkblue);
+  color: var(--white);
+}
+.btn-light {
+  background-color: var(--white) !important;
+}
+
+.btn-primary-checkout.disabled, .btn-primary-checkout:disabled {
+  background-color: gray;
+  border-color: gray;
+}
+
+.selectDisable {
+  pointer-events: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -ms-user-select: none;
+}
+
+/*----- END Overall Tags -----*/
+
+/* Main NavBar */
 #mainNav {
   font-weight: 700;
   font-family: 'Montserrat';
@@ -84,70 +140,11 @@ section {
 }
 
 #navbar_icon {
-  background-color: #98C6C5;
+  background-color: var(--shadow_green);
 }
+/*------ END Main NavBar ------*/
 
-.btn {
-  border-width: 2px;
-  background-color: #a2cbca;
-}
-
-.btn-outline-info {
-  border-color: #17202A;
-  color: #17202A;
-}
-.btn-outline-info:hover {
-  border-color: #17202A;
-  background-color: #17202A;
-  color: #fff;
-}
-
-.btn-info, .btn-info:hover {
-  background-color: #17202A;
-  border-color: #17202A;
-}
-
-.btn-primary {
-  background-color: #18BC9C;
-  border-color: #18BC9C;
-}
-
-/* Tutoring Checkout Button */
-.btn-primary-checkout {
-  background-color: #18BC9C;
-  border-color: #18BC9C;
-  color: white;
-}
-
-.btn-primary-checkout:focus, .btn-primary-checkout:active {
-  background-color: #128f76;
-  border-color: #128f76;
-  }
-.btn-primary-checkout.disabled, .btn-primary-checkout:disabled {
-  background-color: gray;
-  border-color: gray;
-}
-/* Tutoring Checkout Button */
-
-.btn-light {
-  background-color: #fff !important;
-}
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-  background-color: #128f76;
-  border-color: #128f76;
-}
-
-.selectDisable {
-  pointer-events: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  -webkit-touch-callout: none;
-  -ms-user-select: none;
-}
-
+/* Projects Page */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, 320px);
@@ -165,7 +162,7 @@ section {
 }
 
 .grid-element {
-  background-color: #98C6C5;
+  background-color: var(--shadow_green);
   height: 100%;
   border:1px solid var(--borderColor);
   border-radius: 15px;
@@ -175,7 +172,7 @@ section {
 }
 
 .grid-element:hover {
-  background-color: #a2cbca;
+  background-color: var(--light_teal);
 }
 
 .post-description {
@@ -189,6 +186,35 @@ section {
   border-radius: 15px;
 }
 
+.carousel_img_style {
+  border-radius: 10px;
+}
+
+.img_carousel {
+  width: 50%; 
+  margin: auto;
+}
+
+hr.light {
+    border: 1px solid white;
+    border-radius: 5px;
+  }
+
+/* Used in blog posts and project posts */
+.tag{
+  display:inline-block;
+  /* Text color */
+  color:var(--white);
+  /* May change */
+  background-color: #888;
+  border-radius: 5px;
+  margin: 2px;
+  padding: 2px 5px;
+  font-size: 14px;	
+}
+/*------ END Projects Page ------*/
+
+/* About Page */
 #me-img {
   width: 200px;
   height: auto;
@@ -198,7 +224,7 @@ section {
 }
 
 .about-links {
-  background-color: #a2cbca;
+  background-color: var(--light_teal);
   border-radius: 20px;
   -webkit-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
   -moz-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
@@ -209,36 +235,11 @@ section {
   justify-content: center;
   align-items: center;
 }
-
-.tag{
-  display:inline-block;
-  /* Text color */
-  color:#fff;
-  /* May change */
-	background-color: #888;
-	border-radius: 5px;
-	margin: 2px;
-	padding: 2px 5px;
-	font-size: 14px;	
-}
-
-hr.light {
-  border: 1px solid white;
-  border-radius: 5px;
-}
-
-.carousel_img_style {
-  border-radius: 10px;
-}
-
-.img_carousel {
-  width: 50%; 
-  margin: auto;
-}
+/*------ END About Page ------*/
 
 /* ---Blog---*/
 .content-section {
-  background: #a2cbca;
+  background: var(--light_teal);
   border-radius: 15px;
   -webkit-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
   -moz-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
@@ -255,7 +256,7 @@ a.article-title:hover {
 }
 
 .article-content:hover {
-  background-color: #a2cbca;;
+  background-color: var(--light_teal);;
 }
 
 .article-metadata {
@@ -270,14 +271,15 @@ a.article-title:hover {
 }
 /* ---END Blog---*/
 
-
+/* Tutor Page */
 .checkout-container {
-  background-color: #a2cbca;
+  background-color: var(--light_teal);
   border-radius: 20px;
   -webkit-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
   -moz-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
   box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
 }
+/*------ END Tutor Page -----*/
 
 @media (max-width: 768px) {
   #tutor-info {
@@ -287,7 +289,7 @@ a.article-title:hover {
   
   .checkout-container {
     margin: 5%;
-    background-color: #a2cbca;
+    background-color: var(--light_teal);
     border-radius: 20px;
     -webkit-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
     -moz-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
@@ -305,11 +307,13 @@ a.article-title:hover {
     padding: 10%;
     padding-bottom: 20%;
   }
-  
+
   #blog-sidebar {
     padding: 10%;
   }
 }
+
+
 
 /* STRIPE */
 
