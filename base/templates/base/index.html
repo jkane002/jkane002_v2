@@ -25,15 +25,19 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="{% static 'css/styles.css' %}" rel="stylesheet" type="text/css">
+    <!-- Stripe API -->
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 
 <body>
 
-    <h5 id="name_title" class="text-left mt-4 ml-4 pb-3">
-        <a href="/">
-            Jonathan Kaneshiro
-        </a>
-    </h5>
+    <div>
+        <h5 id="name_title" class="text-left mt-4 ml-4 pb-3">
+            <a href="/">
+                Jonathan Kaneshiro
+            </a>
+        </h5>
+    </div>
     {% block content %}
     {% endblock content %}
     {% include 'base/navBar.html' %}
@@ -50,5 +54,31 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+
+<script>
+
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }
+    }
+
+    toggleSwitch.addEventListener('change', switchTheme, false);
+
+    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
+    }
+</script>
 
 </html>
