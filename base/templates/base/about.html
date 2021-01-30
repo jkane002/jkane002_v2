@@ -1,4 +1,5 @@
 {% extends 'base/index.html' %}
+{% load static %}
 {% block content %}
 
 <!-- About Section -->
@@ -6,6 +7,7 @@
     <div class="col-lg-4 ml-auto text-center text-white">
         <div class="about-links pb-1 m-3">
             <!-- TODO: Take out from gitignore when in production -->
+            <img src="{% static 'images/me.jpeg' %}" alt="my face" class="rounded-circle m-3" id="me-img">
             <ul class="no-bullets m-4">
                 <li>
                     <h3> <a href="https://www.linkedin.com/in/jkaneshiro" target="blank"> LinkedIn</a></h3>
@@ -15,6 +17,10 @@
                 </li>
                 <li>
                     <h3><a href="mailto:jkaneshiro97@gmail.com?Subject=Hello%20Again" target="blank"> Email</a>
+                    </h3>
+                </li>
+                <li>
+                    <h3><a href="{% static 'files/JonathanKaneshiro_Resume.pdf' %}" target="blank"> Curriculum vitae</a>
                     </h3>
                 </li>
             </ul>
