@@ -123,7 +123,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 # https://docs.djangoproject.com/en/3.1/howto/static-files/#serving-static-files-during-development
 STATIC_ROOT = os.path.join(BASE_DIR, 'base/staticfiles')
-STATIC_URL = '/static/'
+STATIC_URL = '/staticfiles/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'base/static/images/')
 MEDIA_URL = '/images/'
 
