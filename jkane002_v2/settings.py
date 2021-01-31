@@ -163,12 +163,11 @@ else:
     FULL_10_WEEKS = os.environ.get('FULL_10_WEEKS_LIVE') 
     FULL_15_WEEKS = os.environ.get('FULL_15_WEEKS_LIVE') 
     FULL_20_WEEKS = os.environ.get('FULL_20_WEEKS_LIVE') 
-    
     # TODO: Figure out weekly subscription
     # WEEKLY_SUB = os.environ.get('WEEKLY_SUB_LIVE') 
+    
+    # Forces https
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
 
 django_heroku.settings(locals())
-
-# Forces https
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
