@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('JKANE002_V2_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'jkaneshiro.herokuapp.com', 'jkaneshiro.me' , 'www.jkaneshiro.me']
+ALLOWED_HOSTS = ['127.0.0.1', 'jkaneshiro.herokuapp.com', 'jkaneshiro.me']
 
 
 # Application definition
