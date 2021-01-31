@@ -168,3 +168,7 @@ else:
     # WEEKLY_SUB = os.environ.get('WEEKLY_SUB_LIVE') 
 
 django_heroku.settings(locals())
+
+# Forces https
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
