@@ -3,8 +3,6 @@
 <html lang="en">
 
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Jonathan Kaneshiro's Portfolio Website">
@@ -29,6 +27,15 @@
     <link href="{% static 'css/styles.css' %}" rel="stylesheet" type="text/css">
     <!-- Stripe API -->
     <script src="https://js.stripe.com/v3/"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136708583-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-136708583-1');
+    </script>
 </head>
 
 <body>
