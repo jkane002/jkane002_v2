@@ -36,6 +36,10 @@ h6 {
   color:  var(--primary-color);
 }
 
+p {
+  margin-left: 1.5rem;
+}
+
 /* may change */
 p,li, label, small, span {
   color: var(--primary-color) ;
