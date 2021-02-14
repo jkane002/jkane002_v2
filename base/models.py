@@ -73,6 +73,41 @@ class ProjectPost(models.Model):
 
         super().save(*args, **kwargs)
 
+    # Very crude way of splitting lines
+    '''
+    Problem: Django's templating language doesn't take in parameters for functions
+     TODO: create many to many relationships for text fields
+           essentially revamping the database to take in bullet points.
+           For the interest of time, this will suffice
+    '''
+    def problem_split(self):
+        return filter(None, (line.strip() for line in self.problem.splitlines()))
+    
+    def objective_split(self):
+        return filter(None, (line.strip() for line in self.objective.splitlines()))
+    
+    def description_split(self):
+        return filter(None, (line.strip() for line in self.description.splitlines()))
+    
+    def challenge_split(self):
+        return filter(None, (line.strip() for line in self.challenge.splitlines()))
+
+    def leadership_split(self):
+        return filter(None, (line.strip() for line in self.leadership.splitlines()))
+    
+    def enjoyed_split(self):
+        return filter(None, (line.strip() for line in self.enjoyed.splitlines()))
+    
+    def mistakes_split(self):
+        return filter(None, (line.strip() for line in self.mistake.splitlines()))
+    
+    def revisions_split(self):
+        return filter(None, (line.strip() for line in self.possible_revisions.splitlines()))
+    
+    def features_split(self):
+        return filter(None, (line.strip() for line in self.features.splitlines()))
+    
+
 class ProjectPostImage(models.Model):
     '''Field for project images'''
     post = models.ForeignKey(ProjectPost, default="images/placeholder.png", on_delete=models.CASCADE, null=True)
